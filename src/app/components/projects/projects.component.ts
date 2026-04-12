@@ -165,23 +165,7 @@ export class ProjectsComponent implements OnInit {
         'Carga rápida'
       ]
     },
-    {
-      title: 'Ponte Chida',
-      description: 'Landing page de tienda de ropa con integración de tienda nube. Actualmente en construcción.',
-      image: 'assets/images/projects/project-7.png',
-      github: 'https://github.com/joaquin9830/ponte-chida',
-      category: 'web',
-      technologies: ['React', 'Jsx', 'CSS3', ' Integración con Tienda Nube'],
-      date: '2025',
-      status: 'in-progress',
-      features: [
-        'Catálogo de productos',
-        'Integración con Shopify',
-        'Carrito de compras',
-        'Pagos en línea',
-        'Panel administrativo'
-      ]
-    }
+    
   ];
 
   get filteredProjects(): Project[] {
