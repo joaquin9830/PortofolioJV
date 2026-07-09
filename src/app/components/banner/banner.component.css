@@ -305,7 +305,7 @@
 
 .panel-project-card {
   display: grid;
-  grid-template-columns: 64px 1fr auto;
+  grid-template-columns: 80px 1fr auto;
   gap: var(--space-3);
   align-items: center;
   padding: var(--space-3) var(--space-4);
@@ -335,19 +335,25 @@
 }
 
 .project-card-thumb {
-  width: 64px;
-  height: 44px;
+  width: 80px;
+  height: 56px;
   border-radius: var(--border-radius-sm);
   overflow: hidden;
   background: var(--bg-secondary);
   flex-shrink: 0;
   border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
 }
 
+.project-card-thumb app-project-image,
 .project-card-thumb img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   display: block;
 }
 
@@ -511,12 +517,12 @@
   }
 
   .panel-project-card {
-    grid-template-columns: 56px 1fr auto;
+    grid-template-columns: 72px 1fr auto;
   }
 
   .project-card-thumb {
-    width: 56px;
-    height: 38px;
+    width: 72px;
+    height: 50px;
   }
 }
 
