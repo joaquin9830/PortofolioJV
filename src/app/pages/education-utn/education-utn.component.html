@@ -1,176 +1,93 @@
-<!-- Sección de Educación UTN Mejorada -->
-<section class="education-detail-section">
-  <!-- Partículas de fondo -->
-  <div class="particles-container">
-    <div class="particle" *ngFor="let particle of particles"></div>
-  </div>
-  
-  <!-- Gradientes animados -->
-  <div class="section-background">
-    <div class="gradient-orb orb-1"></div>
-    <div class="gradient-orb orb-2"></div>
-  </div>
+<main class="edu-page section-wrap" aria-labelledby="edu-title">
+  <div class="section-inner edu-page-inner">
 
-  <div class="education-detail-container">
-    <!-- Botón de regreso -->
-    <div class="back-button-container">
-      <a href="#education" class="back-button">
-        <i class="bi bi-arrow-left"></i>
-        <span>Volver a Educación</span>
-      </a>
-    </div>
+    <nav class="edu-nav" aria-label="Navegación de educación">
+      <button type="button" class="edu-back btn btn-ghost btn-sm" (click)="goBack()">
+        <i class="bi bi-arrow-left" aria-hidden="true"></i>
+        <span>Volver a educación</span>
+      </button>
+    </nav>
 
-    <!-- Header de la educación -->
-    <div class="education-header">
-      <div class="institution-badge">
-        <i class="bi bi-mortarboard"></i>
-        <span>Universidad</span>
+    <header class="edu-header">
+      <span class="section-eyebrow">UTN</span>
+      <h1 id="edu-title" class="section-heading">Técnico Universitario en Programación</h1>
+      <p class="edu-institution">Universidad Tecnológica Nacional</p>
+      <div class="edu-meta">
+        <span class="edu-meta-item"><i class="bi bi-calendar3" aria-hidden="true"></i> 2020 — 2023</span>
+        <span class="edu-meta-item"><i class="bi bi-check-circle" aria-hidden="true"></i> Completado</span>
       </div>
-      <h1 class="education-title">Técnico Universitario en Programación</h1>
-      <h2 class="institution-name">Universidad Tecnológica Nacional</h2>
-      <div class="education-meta">
-        <span class="duration">2020 - 2023</span>
-        <span class="status completed">Completado</span>
+    </header>
+
+    <section class="edu-block panel-card" aria-labelledby="profile-heading">
+      <h2 id="profile-heading" class="edu-block-title">Perfil profesional</h2>
+      <p>
+        Formación en análisis, diseño y desarrollo de soluciones informáticas con
+        metodologías estructuradas para el procesamiento de datos.
+      </p>
+    </section>
+
+    <section class="edu-block" aria-labelledby="competencies-heading">
+      <h2 id="competencies-heading" class="edu-block-title">Competencias desarrolladas</h2>
+      <div class="edu-comp-grid">
+        <article class="panel-card edu-comp-card">
+          <div class="edu-comp-icon"><i class="bi bi-search" aria-hidden="true"></i></div>
+          <h3>Análisis de problemas</h3>
+          <p>Selección de algoritmos y técnicas para resolver problemas de datos.</p>
+        </article>
+        <article class="panel-card edu-comp-card">
+          <div class="edu-comp-icon"><i class="bi bi-code-slash" aria-hidden="true"></i></div>
+          <h3>Desarrollo de programas</h3>
+          <p>Programación en lenguajes de alto nivel con estructuras bien definidas.</p>
+        </article>
+        <article class="panel-card edu-comp-card">
+          <div class="edu-comp-icon"><i class="bi bi-gear" aria-hidden="true"></i></div>
+          <h3>Implementación técnica</h3>
+          <p>Tareas de desarrollo bajo especificaciones de análisis de sistemas.</p>
+        </article>
       </div>
-    </div>
+    </section>
 
-    <!-- Descripción principal -->
-    <div class="education-description">
-      <div class="description-card">
-        <h3>Perfil Profesional</h3>
-        <p>
-          Como técnico universitario en programación, he desarrollado competencias sólidas en análisis, diseño y 
-          desarrollo de soluciones informáticas. Mi formación me permite abordar problemas complejos de procesamiento 
-          de datos con metodologías estructuradas y eficientes.
-        </p>
-      </div>
-    </div>
-
-    <!-- Competencias desarrolladas -->
-    <div class="competencies-section">
-      <h3>Competencias Desarrolladas</h3>
-      <div class="competencies-grid">
-        <div class="competency-card">
-          <div class="competency-icon">
-            <i class="bi bi-search"></i>
-          </div>
-          <h4>Análisis de Problemas</h4>
-          <p>Capacidad para analizar problemas de procesamiento de datos y seleccionar algoritmos y técnicas apropiadas para su resolución.</p>
-        </div>
-        
-        <div class="competency-card">
-          <div class="competency-icon">
-            <i class="bi bi-code-slash"></i>
-          </div>
-          <h4>Desarrollo de Programas</h4>
-          <p>Elaboración y corrección de programas en lenguajes de programación superiores con estructuras bien definidas.</p>
-        </div>
-        
-        <div class="competency-card">
-          <div class="competency-icon">
-            <i class="bi bi-gear"></i>
-          </div>
-          <h4>Implementación Técnica</h4>
-          <p>Realización de tareas específicas definidas por analistas de sistemas, aplicando metodologías de desarrollo.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tecnologías aprendidas -->
-    <div class="technologies-section">
-      <h3>Tecnologías Dominadas</h3>
-      <div class="tech-categories">
-        <div class="tech-category">
-          <div class="category-header">
-            <i class="bi bi-layout-text-window-reverse"></i>
-            <h4>Frontend</h4>
-          </div>
-          <div class="tech-items">
-            <div class="tech-item">
-              <img src="../../../assets/icons/skills/html.png" alt="HTML5">
-              <span>HTML5</span>
-            </div>
-            <div class="tech-item">
-              <img src="../../../assets/icons/skills/css.png" alt="CSS3">
-              <span>CSS3</span>
-            </div>
-            <div class="tech-item">
-              <img src="../../../assets/icons/skills/javascript.png" alt="JavaScript">
-              <span>JavaScript</span>
-            </div>
+    <section class="edu-block" aria-labelledby="tech-heading">
+      <h2 id="tech-heading" class="edu-block-title">Tecnologías dominadas</h2>
+      <div class="edu-tech-groups">
+        <div class="edu-tech-group">
+          <h3>Frontend</h3>
+          <div class="edu-tech-chips">
+            <span class="edu-tech-chip"><img src="assets/icons/skills/html.png" alt="" width="18" height="18" loading="lazy" decoding="async"> HTML5</span>
+            <span class="edu-tech-chip"><img src="assets/icons/skills/css.png" alt="" width="18" height="18" loading="lazy" decoding="async"> CSS3</span>
+            <span class="edu-tech-chip"><img src="assets/icons/skills/javascript.png" alt="" width="18" height="18" loading="lazy" decoding="async"> JavaScript</span>
           </div>
         </div>
-
-        <div class="tech-category">
-          <div class="category-header">
-            <i class="bi bi-server"></i>
-            <h4>Backend</h4>
-          </div>
-          <div class="tech-items">
-            <div class="tech-item">
-              <img src="../../../assets/icons/skills/java.png" alt="Java">
-              <span>Java</span>
-            </div>
-            <div class="tech-item">
-              <img src="../../../assets/icons/skills/python.png" alt="Python">
-              <span>Python</span>
-            </div>
+        <div class="edu-tech-group">
+          <h3>Backend</h3>
+          <div class="edu-tech-chips">
+            <span class="edu-tech-chip"><img src="assets/icons/skills/java.png" alt="" width="18" height="18" loading="lazy" decoding="async"> Java</span>
+            <span class="edu-tech-chip"><img src="assets/icons/skills/python.png" alt="" width="18" height="18" loading="lazy" decoding="async"> Python</span>
           </div>
         </div>
-
-        <div class="tech-category">
-          <div class="category-header">
-            <i class="bi bi-database"></i>
-            <h4>Bases de Datos</h4>
-          </div>
-          <div class="tech-items">
-            <div class="tech-item">
-              <img src="../../../assets/icons/skills/mysql.png" alt="MySQL">
-              <span>MySQL</span>
-            </div>
-            <div class="tech-item">
-              <img src="../../../assets/icons/skills/postgres.png" alt="PostgreSQL">
-              <span>PostgreSQL</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="tech-category">
-          <div class="category-header">
-            <i class="bi bi-tools"></i>
-            <h4>Herramientas</h4>
-          </div>
-          <div class="tech-items">
-            <div class="tech-item">
-              <img src="../../../assets/icons/skills/git.png" alt="Git">
-              <span>Git</span>
-            </div>
-            <div class="tech-item">
-              <img src="../../../assets/icons/skills/github.png" alt="GitHub">
-              <span>GitHub</span>
-            </div>
-            <div class="tech-item">
-              <img src="../../../assets/icons/skills/scrum.png" alt="Scrum">
-              <span>Scrum</span>
-            </div>
+        <div class="edu-tech-group">
+          <h3>Bases de datos y herramientas</h3>
+          <div class="edu-tech-chips">
+            <span class="edu-tech-chip"><img src="assets/icons/skills/mysql.png" alt="" width="18" height="18" loading="lazy" decoding="async"> MySQL</span>
+            <span class="edu-tech-chip"><img src="assets/icons/skills/postgres.png" alt="" width="18" height="18" loading="lazy" decoding="async"> PostgreSQL</span>
+            <span class="edu-tech-chip"><img src="assets/icons/skills/git.png" alt="" width="18" height="18" loading="lazy" decoding="async"> Git</span>
+            <span class="edu-tech-chip"><img src="assets/icons/skills/github.png" alt="" width="18" height="18" loading="lazy" decoding="async"> GitHub</span>
+            <span class="edu-tech-chip"><img src="assets/icons/skills/scrum.png" alt="" width="18" height="18" loading="lazy" decoding="async"> Scrum</span>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
-
-    <!-- Call to action -->
-    <div class="education-cta">
-      <div class="cta-content">
-        <h4>¿Interesado en mi formación técnica?</h4>
-        <p>Descarga mi CV completo para ver todos mis proyectos y certificaciones</p>
-        <a href="../../../assets/document/Programador CV Joaquín Viñolo.pdf.pdf" 
-           class="btn btn-primary btn-lg" 
-           download>
-          <i class="bi bi-download"></i>
-          <span>Descargar CV</span>
+    <section class="section-cta" aria-labelledby="cta-heading">
+      <h3 id="cta-heading">¿Interesado en mi formación técnica?</h3>
+      <p>Descargá mi CV completo para ver proyectos y certificaciones.</p>
+      <div class="cta-row">
+        <a [href]="cvPath" class="btn btn-primary btn-lg" download rel="noopener">
+          <i class="bi bi-download" aria-hidden="true"></i>
+          Descargar CV
         </a>
       </div>
-    </div>
+    </section>
+
   </div>
-</section>
+</main>

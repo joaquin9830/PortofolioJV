@@ -11,7 +11,6 @@ import {DevIconsService} from '../app/service/simple-icons.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { NgCircleProgressModule } from 'ng-circle-progress';
 import {HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -21,7 +20,6 @@ import { SkillsComponent } from './components/skills/skills.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { EducationDetailComponent } from './pages/education-detail/education-detail.component';
 import { HomeComponent } from './pages/home/home.component';
-import { EducationCrimiComponent } from './pages/education-crimi/education-crimi.component';
 import { EducationAluraComponent } from './pages/education-alura/education-alura.component';
 import { EducationUtnComponent } from './pages/education-utn/education-utn.component';
 import { ButtonScrollComponent } from './components/button-scroll/button-scroll.component';
@@ -29,6 +27,9 @@ import { BannerComponent } from './components/banner/banner.component';
 import { ServicesComponent } from './components/services/services.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { SimpleIconComponent } from './components/simple-icon/simple-icon.component';
+import { ProjectImageComponent } from './components/project-image/project-image.component';
+import { ProjectDetailComponent } from './pages/project-detail/project-detail.component';
+import { ScrollRevealDirective } from './directives/scroll-reveal.directive';
 
 
 @NgModule({
@@ -42,19 +43,20 @@ import { SimpleIconComponent } from './components/simple-icon/simple-icon.compon
     ProjectsComponent,
     EducationDetailComponent,
     HomeComponent,
-    EducationCrimiComponent,
     EducationAluraComponent,
     EducationUtnComponent,
     ButtonScrollComponent,
     BannerComponent,
     ServicesComponent,
     ContactComponent,
-    SimpleIconComponent
+    SimpleIconComponent,
+    ProjectImageComponent,
+    ProjectDetailComponent,
+    ScrollRevealDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgCircleProgressModule.forRoot({}),
     HttpClientModule,
     ReactiveFormsModule,
     // Removemos Lucide Angular

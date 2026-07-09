@@ -1,93 +1,29 @@
-<section id="skills" class="skills-section">
-  <!-- Partículas de fondo -->
-  <div class="particles-container">
-    <div class="particle" *ngFor="let particle of particles"></div>
-  </div>
-
-  <!-- Fondo con gradientes -->
-  <div class="section-background">
-    <div class="gradient-orb orb-1"></div>
-    <div class="gradient-orb orb-2"></div>
-    <div class="gradient-orb orb-3"></div>
-  </div>
-
-  <div class="skills-container">
-    <!-- Header -->
-    <div class="section-header">
-      <h2 class="section-title">
-        <span class="title-text">Mis</span>
-        <span class="title-highlight">Habilidades</span>
-      </h2>
-      <div class="title-underline"></div>
-      <p class="section-subtitle">
-        Tecnologías y herramientas que domino para crear soluciones excepcionales
-      </p>
-    </div>
-
-    <!-- Stats -->
-    <div class="skills-stats">
-      <div class="stat-card" *ngFor="let stat of skillsStats">
-        <div class="stat-icon">
-          <i [class]="stat.icon"></i>
-        </div>
-        <div class="stat-content">
-          <div class="stat-number">{{ stat.value }}</div>
-          <div class="stat-label">{{ stat.label }}</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Categorías -->
-    <div class="skills-categories">
-      <div class="category-card" *ngFor="let section of skillsSections" [class.animate]="isVisible">
-        <div class="category-header">
-          <div class="category-icon">
-            <i [class]="section.icon"></i>
-          </div>
-          <h3 class="category-name">{{ section.name }}</h3>
-          <div class="category-count">{{ section.skills.length }}</div>
-        </div>
-
-        <div class="skills-grid">
-          <div class="skill-card" *ngFor="let skill of section.skills">
-            <div class="skill-content">
-              <div class="skill-icon-container">
-                <i [class]="skill.icon"></i>
-                <div class="skill-glow"></div>
-              </div>
-
-              <div class="skill-info">
-                <h4 class="skill-name">{{ skill.name }}</h4>
-                <div class="skill-experience">
-                  <i class="bi bi-check-circle-fill check-icon"></i>
-                  <span>Experiencia Profesional</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="skill-hover-effect"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <div class="skills-cta">
-      <div class="cta-content">
-        <h3>¿Interesado en mis habilidades técnicas?</h3>
-        <p>Descarga mi CV para ver todos mis certificados y experiencia detallada</p>
-        <div class="cta-buttons">
-          <a href="../../../assets/document/Programador CV Joaquín Viñolo.pdf.pdf"
-             class="btn btn-primary btn-lg" download>
-            <i class="bi bi-download"></i>
-            <span>Descargar CV</span>
-          </a>
-          <a href="#contact" class="btn btn-outline btn-lg">
-            <i class="bi bi-envelope"></i>
-            <span>Contactar</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<section id="skills" class="skills-section section-wrap" aria-labelledby="skills-heading">
+  <div class="section-inner">
+    <header class="skills-header">
+      <span class="section-eyebrow" appScrollReveal [revealDelay]="0">Capacidades</span>
+      <h2 id="skills-heading" class="section-heading" appScrollReveal [revealDelay]="80">
+        Stack y habilidades con foco profesional.
+      </h2>
+      <p class="section-lead" appScrollReveal revealVariant="fade" [revealDelay]="160">
+        Organizadas por aporte al proyecto, no como lista decorativa de logos.
+      </p>
+    </header>
+
+    <div class="skills-grid">
+      <article class="panel-card skill-category card-fill"
+               *ngFor="let category of categories; let i = index"
+               appScrollReveal
+               [revealDelay]="i * 100">
+        <h3 class="category-name">{{ category.name }}</h3>
+        <p class="category-desc">{{ category.description }}</p>
+        <ul class="skill-list">
+          <li *ngFor="let skill of category.skills" class="skill-item">
+            <i [class]="skill.icon" class="skill-icon" aria-hidden="true"></i>
+            <span>{{ skill.name }}</span>
+          </li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>

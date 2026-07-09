@@ -1,62 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-
-interface Particle {
-  x: number;
-  y: number;
-  size: number;
-  speedX: number;
-  speedY: number;
-  opacity: number;
-}
+import { Router } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
+import { CV_PATH } from '../../constants/site.constants';
+import { NavigationScrollService } from '../../service/navigation-scroll.service';
+import { SeoService } from '../../service/seo.service';
 
 @Component({
   selector: 'app-education-utn',
   templateUrl: './education-utn.component.html',
-  styleUrls: ['./education-utn.component.css']
+  styleUrls: []
 })
 export class EducationUtnComponent implements OnInit {
-  particles: Particle[] = [];
+  readonly cvPath = CV_PATH;
+
+  constructor(
+    private router: Router,
+    private seoService: SeoService,
+    private navigationScroll: NavigationScrollService,
+    private viewportScroller: ViewportScroller
+  ) {}
 
   ngOnInit(): void {
-    this.generateParticles();
-    this.animateParticles();
+    this.viewportScroller.scrollToPosition([0, 0]);
+    this.seoService.updateForEducation(
+      'Técnico Universitario en Programación — UTN',
+      'Título universitario UTN en programación: algoritmos, desarrollo con Java y Python, bases de datos y metodologías de software.',
+      '/education-utn'
+    );
   }
 
-  private generateParticles(): void {
-    for (let i = 0; i < 25; i++) {
-      this.particles.push({
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight,
-        size: Math.random() * 2 + 1,
-        speedX: (Math.random() - 0.5) * 0.2,
-        speedY: (Math.random() - 0.5) * 0.2,
-        opacity: Math.random() * 0.3 + 0.1
-      });
-    }
-  }
-
-  private animateParticles(): void {
-    const animate = () => {
-      this.particles.forEach(particle => {
-        particle.x += particle.speedX;
-        particle.y += particle.speedY;
-
-        // Reset position if out of bounds
-        if (particle.x < 0 || particle.x > window.innerWidth) {
-          particle.speedX *= -1;
-        }
-        if (particle.y < 0 || particle.y > window.innerHeight) {
-          particle.speedY *= -1;
-        }
-
-        // Keep particles in bounds
-        particle.x = Math.max(0, Math.min(window.innerWidth, particle.x));
-        particle.y = Math.max(0, Math.min(window.innerHeight, particle.y));
-      });
-
-      requestAnimationFrame(animate);
-    };
-
-    animate();
+  goBack(): void {
+    this.navigationScroll.backOrHome('education');
   }
 }

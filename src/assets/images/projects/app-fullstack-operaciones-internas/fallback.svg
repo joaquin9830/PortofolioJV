@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#0f172a"/>
+  <rect x="40" y="40" width="720" height="370" rx="12" fill="#1e293b" stroke="#818cf8" stroke-width="2"/>
+  <text x="400" y="220" text-anchor="middle" fill="#818cf8" font-family="system-ui,sans-serif" font-size="24" font-weight="600">Aplicacion Web Full Stack</text>
+  <text x="400" y="260" text-anchor="middle" fill="#818cf8" font-family="system-ui,sans-serif" font-size="22" font-weight="600">Operaciones Internas</text>
+  <text x="400" y="300" text-anchor="middle" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="16">Angular - Sistemas SPA - Cloud</text>
+</svg>

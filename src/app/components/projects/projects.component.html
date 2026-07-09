@@ -1,219 +1,212 @@
-<!-- Sección Proyectos Espectacular -->
-<section id="projects" class="projects-section">
-  <!-- Partículas de fondo -->
-  <div class="particles-container">
-    <div class="particle" *ngFor="let particle of particles"></div>
-  </div>
-  
-  <!-- Gradientes animados -->
-  <div class="section-background">
-    <div class="gradient-orb orb-1"></div>
-    <div class="gradient-orb orb-2"></div>
-    <div class="gradient-orb orb-3"></div>
-  </div>
-
-  <div class="projects-container">
-    <!-- Título con animación -->
-    <div class="section-header">
-      <h2 class="section-title">
-        <span class="title-text">Mis</span>
-        <span class="title-highlight">Proyectos</span>
-      </h2>
-      <div class="title-underline"></div>
-      <p class="section-subtitle">
-        Una selección de mis trabajos más destacados que demuestran mi experiencia y creatividad
-      </p>
-    </div>
-
-    <!-- Estadísticas de proyectos -->
-    <div class="projects-stats">
-      <div class="stat-card" *ngFor="let stat of projectStats">
-        <div class="stat-icon">
-          <i [class]="stat.icon"></i>
-        </div>
-        <div class="stat-content">
-          <div class="stat-number">{{ stat.value }}</div>
-          <div class="stat-label">{{ stat.label }}</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Filtros de categorías -->
-    <div class="project-filters">
-      <button 
-        class="filter-btn" 
-        *ngFor="let category of categories" 
-        [class.active]="activeCategory === category.id"
-        (click)="filterProjects(category.id)">
-        <i [class]="category.icon"></i>
-        <span>{{ category.name }}</span>
-      </button>
-    </div>
-
-    <!-- Grid de proyectos -->
-    <div class="projects-grid">
-      <div class="project-card" 
-           *ngFor="let project of filteredProjects; let i = index"
-           [class.animate]="isVisible"
-           [style.animation-delay]="(i * 0.1) + 's'">
-        
-        <!-- Imagen del proyecto -->
-        <div class="project-image-container">
-          <img [src]="project.image" 
-               [alt]="project.title" 
-               class="project-image">
-          <div class="project-overlay">
-            <div class="project-actions">
-              <a *ngIf="project.website" 
-                 [href]="project.website" 
-                 target="_blank" 
-                 class="action-btn website-btn"
-                 title="Ver sitio web">
-                <i class="bi bi-globe"></i>
-              </a>
-              <a [href]="project.github" 
-                 target="_blank" 
-                 class="action-btn github-btn"
-                 title="Ver código">
-                <i class="bi bi-github"></i>
-              </a>
-              <button class="action-btn details-btn"
-                      (click)="openProjectModal(project)"
-                      title="Ver detalles">
-                <i class="bi bi-eye"></i>
-              </button>
-            </div>
-          </div>
-          <div class="project-glow"></div>
-        </div>
-
-        <!-- Información del proyecto -->
-        <div class="project-content">
-          <div class="project-header">
-            <h3 class="project-title">{{ project.title }}</h3>
-            <div class="project-badge" [class]="'badge-' + project.category">
-              {{ getCategoryName(project.category) }}
-            </div>
-          </div>
-          
-          <p class="project-description">{{ project.description }}</p>
-          
-          <!-- Tecnologías utilizadas -->
-          <div class="project-tech">
-            <span class="tech-tag" 
-                  *ngFor="let tech of project.technologies">
-              {{ tech }}
-            </span>
-          </div>
-
-          <!-- Fecha y estado -->
-          <div class="project-meta">
-            <div class="project-date">
-              <i class="bi bi-calendar"></i>
-              <span>{{ project.date }}</span>
-            </div>
-            <div class="project-status" [class]="'status-' + project.status">
-              <i class="bi bi-circle-fill"></i>
-              <span>{{ project.status === 'completed' ? 'Completado' : 'En desarrollo' }}</span>
-            </div>
-          </div>
-
-          <!-- Links del proyecto -->
-          <div class="project-links">
-            <a *ngIf="project.website" 
-               [href]="project.website" 
-               target="_blank" 
-               class="project-link website-link"
-               title="Ver sitio web">
-              <i class="bi bi-globe"></i>
-              <span>Ver sitio</span>
-            </a>
-            <a [href]="project.github" 
-               target="_blank" 
-               class="project-link github-link"
-               title="Ver código en GitHub">
-              <i class="bi bi-github"></i>
-              <span>GitHub</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Efecto hover -->
-        <div class="project-hover-effect"></div>
-      </div>
-    </div>
-
-    <!-- Call to action -->
-    <div class="projects-cta">
-      <div class="cta-content">
-        <h3>¿Te interesa colaborar en un proyecto?</h3>
-        <p>Estoy siempre abierto a nuevas oportunidades y proyectos desafiantes</p>
-        <div class="cta-buttons">
-          <a href="#contact" class="btn btn-primary btn-lg">
-            <i class="bi bi-envelope"></i>
-            <span>Contactar</span>
-          </a>
-          <a [href]="githubProfile" target="_blank" class="btn btn-outline btn-lg">
-            <i class="bi bi-github"></i>
-            <span>Ver GitHub</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal de proyecto -->
-  <div class="project-modal" [class.active]="selectedProject" (click)="closeProjectModal()">
-    <div class="modal-content" (click)="$event.stopPropagation()" *ngIf="selectedProject">
-      <button class="modal-close" (click)="closeProjectModal()">
-        <i class="bi bi-x"></i>
-      </button>
-      
-      <div class="modal-header">
-        <img [src]="selectedProject.image" [alt]="selectedProject.title" class="modal-image">
-        <div class="modal-info">
-          <h3 class="modal-title">{{ selectedProject.title }}</h3>
-          <div class="modal-badge" [class]="'badge-' + selectedProject.category">
-            {{ getCategoryName(selectedProject.category) }}
-          </div>
-        </div>
-      </div>
-      
-      <div class="modal-body">
-        <p class="modal-description">{{ selectedProject.description }}</p>
-        
-        <div class="modal-tech">
-          <h4>Tecnologías utilizadas:</h4>
-          <div class="tech-tags">
-            <span class="tech-tag" *ngFor="let tech of selectedProject.technologies">
-              {{ tech }}
-            </span>
-          </div>
-        </div>
-        
-        <div class="modal-features" *ngIf="selectedProject.features">
-          <h4>Características principales:</h4>
-          <ul>
-            <li *ngFor="let feature of selectedProject.features">{{ feature }}</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="modal-footer">
-        <a *ngIf="selectedProject.website" 
-           [href]="selectedProject.website" 
-           target="_blank" 
-           class="btn btn-primary">
-          <i class="bi bi-globe"></i>
-          <span>Ver sitio web</span>
-        </a>
-        <a [href]="selectedProject.github" 
-           target="_blank" 
-           class="btn btn-outline">
-          <i class="bi bi-github"></i>
-          <span>Ver código</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
+<section id="projects" class="projects-section section-wrap" aria-labelledby="projects-heading">
+  <div class="section-inner">
+    <header class="projects-header">
+      <span class="section-eyebrow" appScrollReveal [revealDelay]="0">Portfolio</span>
+      <h2 id="projects-heading" class="section-heading" appScrollReveal [revealDelay]="80">
+        Proyectos reales con problema, solución e impacto.
+      </h2>
+      <p class="section-lead" appScrollReveal revealVariant="fade" [revealDelay]="160">
+        Casos de estudio con problema, solución e impacto medible.
+      </p>
+    </header>
+
+    <div class="featured-section" *ngIf="featuredProjects.length">
+      <h3 class="subsection-title" appScrollReveal [revealDelay]="0">Proyectos destacados</h3>
+
+      <div class="featured-grid">
+        <article class="panel-card project-card project-card--featured card-fill"
+                 *ngFor="let project of featuredProjects; let i = index"
+                 appScrollReveal
+                 [revealDelay]="i * 120">
+          <div class="project-image-container">
+            <app-project-image [project]="project" variant="thumb" loading="lazy"></app-project-image>
+            <span class="project-badge">{{ getCategoryName(project.category) }}</span>
+          </div>
+
+          <div class="project-content">
+            <h4 class="project-title">{{ project.title }}</h4>
+            <p class="project-subtitle">{{ project.subtitle }}</p>
+
+            <div class="project-case-fields">
+              <div class="case-field">
+                <span class="field-label">Problema</span>
+                <p>{{ project.problem }}</p>
+              </div>
+              <div class="case-field">
+                <span class="field-label">Solución</span>
+                <p>{{ project.solution }}</p>
+              </div>
+              <div class="case-field case-field--impact">
+                <span class="field-label">Impacto</span>
+                <p>{{ project.impact }}</p>
+              </div>
+            </div>
+
+            <div class="project-tech" aria-label="Stack tecnológico">
+              <span class="tech-tag" *ngFor="let tech of project.technologies.slice(0, 5)">{{ tech }}</span>
+            </div>
+
+            <div class="project-actions-row card-footer-align">
+              <a *ngIf="project.hasCaseStudy"
+                 [routerLink]="['/proyecto', project.slug]"
+                 class="btn btn-primary btn-sm">
+                <i class="bi bi-journal-text" aria-hidden="true"></i>
+                Ver caso
+              </a>
+              <button class="btn btn-ghost btn-sm"
+                      (click)="openProjectModal(project, $event)"
+                      [attr.aria-label]="'Vista rápida de ' + project.title">
+                <i class="bi bi-eye" aria-hidden="true"></i>
+                Vista rápida
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="all-projects-section">
+      <h3 class="subsection-title" appScrollReveal [revealDelay]="0">Todos los proyectos</h3>
+
+      <div class="project-filters"
+           role="tablist"
+           aria-label="Filtrar proyectos"
+           appScrollReveal
+           revealVariant="fade"
+           [revealDelay]="80">
+        <button class="filter-btn"
+                *ngFor="let category of categories"
+                role="tab"
+                [class.active]="activeCategory === category.id"
+                [attr.aria-selected]="activeCategory === category.id"
+                (click)="filterProjects(category.id)">
+          <i [class]="category.icon" aria-hidden="true"></i>
+          <span>{{ category.name }}</span>
+        </button>
+      </div>
+
+      <div class="projects-grid">
+        <article class="panel-card project-card card-fill"
+                 *ngFor="let project of filteredProjects; let i = index"
+                 appScrollReveal
+                 [revealDelay]="(i % 6) * 80">
+          <div class="project-image-container project-image-container--compact">
+            <app-project-image [project]="project" variant="thumb" loading="lazy"></app-project-image>
+            <span class="project-status">{{ getStatusLabel(project.status) }}</span>
+          </div>
+
+          <div class="project-content">
+            <div class="project-header">
+              <h4 class="project-title">{{ project.title }}</h4>
+              <span class="project-date">{{ project.date }}</span>
+            </div>
+
+            <div class="case-field">
+              <span class="field-label">Problema</span>
+              <p class="case-snippet">{{ project.problem }}</p>
+            </div>
+
+            <div class="project-stack">
+              <span class="field-label">Stack</span>
+              <div class="project-tech">
+                <span class="tech-tag" *ngFor="let tech of project.technologies.slice(0, 4)">{{ tech }}</span>
+              </div>
+            </div>
+
+            <div class="project-links card-footer-align">
+              <a *ngIf="project.hasCaseStudy"
+                 [routerLink]="['/proyecto', project.slug]"
+                 class="btn btn-primary btn-sm">
+                <i class="bi bi-journal-text" aria-hidden="true"></i>
+                Ver caso
+              </a>
+              <a *ngIf="project.website"
+                 [href]="project.website"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="project-link link-animated">
+                <i class="bi bi-globe" aria-hidden="true"></i>
+                Sitio
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="section-cta" appScrollReveal revealVariant="fade" [revealDelay]="80">
+      <h3>¿Tenés un proyecto técnico en mente?</h3>
+      <p>Soluciones concretas, no landing pages genéricas.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-primary btn-lg">
+          <i class="bi bi-envelope" aria-hidden="true"></i>
+          Hablemos del proyecto
+        </a>
+        <a [href]="githubProfile"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="btn btn-outline btn-lg">
+          <i class="bi bi-github" aria-hidden="true"></i>
+          Ver GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div #projectModal
+       class="project-modal"
+       [class.active]="selectedProject"
+       role="dialog"
+       aria-modal="true"
+       [attr.aria-hidden]="!selectedProject"
+       [attr.aria-labelledby]="selectedProject ? 'modal-title' : null"
+       (click)="closeProjectModal()">
+    <div class="modal-content panel-card modal-enter"
+         (click)="$event.stopPropagation()"
+         *ngIf="selectedProject">
+      <button class="modal-close"
+              (click)="closeProjectModal()"
+              aria-label="Cerrar vista rápida">
+        <i class="bi bi-x" aria-hidden="true"></i>
+      </button>
+
+      <div class="modal-header" *ngIf="selectedProject as p">
+        <app-project-image [project]="p" variant="thumb" loading="lazy" imgClass="modal-image"></app-project-image>
+        <div class="modal-info">
+          <h3 id="modal-title" class="modal-title">{{ p.title }}</h3>
+          <p class="modal-subtitle">{{ p.subtitle }}</p>
+        </div>
+      </div>
+
+      <div class="modal-body" *ngIf="selectedProject as p">
+        <div class="modal-section">
+          <h4>Problema</h4>
+          <p>{{ p.problem }}</p>
+        </div>
+        <div class="modal-section">
+          <h4>Solución</h4>
+          <p>{{ p.solution }}</p>
+        </div>
+        <div class="modal-section">
+          <h4>Impacto</h4>
+          <p>{{ p.impact }}</p>
+        </div>
+        <div class="modal-tech">
+          <h4>Stack</h4>
+          <div class="project-tech">
+            <span class="tech-tag" *ngFor="let tech of p.technologies">{{ tech }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer" *ngIf="selectedProject as p">
+        <button *ngIf="p.hasCaseStudy"
+                class="btn btn-primary"
+                (click)="goToCaseStudy(p.slug)">
+          <i class="bi bi-journal-text" aria-hidden="true"></i>
+          Ver caso completo
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

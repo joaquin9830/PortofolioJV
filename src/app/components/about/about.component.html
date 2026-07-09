@@ -1,142 +1,56 @@
-<!-- Sección Sobre Mí Espectacular -->
-<section id="about" class="about-section">
-  <!-- Partículas de fondo -->
-  <div class="particles-container">
-    <div class="particle" *ngFor="let particle of particles"></div>
-  </div>
-  
-  <!-- Gradientes animados -->
-  <div class="section-background">
-    <div class="gradient-orb orb-1"></div>
-    <div class="gradient-orb orb-2"></div>
-  </div>
-
-  <div class="about-container">
-    <!-- Título con animación -->
-    <div class="section-header">
-      <h2 class="section-title">
-        <span class="title-text">Sobre</span>
-        <span class="title-highlight">Mí</span>
-      </h2>
-      <div class="title-underline"></div>
-    </div>
-
-    <div class="about-content">
-      <!-- Información principal -->
-      <div class="about-main">
-        <div class="about-text">
-          <div class="greeting-card">
-            <div class="greeting-icon">👋</div>
-            <div class="greeting-text">
-              <h3>¡Hola! Soy Joaquín</h3>
-              <p class="role">Desarrollador Full Stack en In Motion</p>
-            </div>
-          </div>
-
-          <div class="description-card">
-            <p class="main-description">
-              Desarrollador <span class="highlight">Full Stack</span> especializado en 
-              <span class="highlight">arquitectura hexagonal</span> y 
-              <span class="highlight">microservicios serverless</span> en AWS Lambda. 
-              En <span class="highlight">In Motion</span> diseño soluciones escalables 
-              con Python, Angular y tecnologías cloud avanzadas, 
-              transformando requerimientos complejos en sistemas robustos.
-            </p>
-          </div>
-
-          <!-- Estadísticas animadas -->
-          <div class="stats-grid">
-            <div class="stat-card" *ngFor="let stat of stats">
-              <div class="stat-icon">
-                <i [class]="stat.icon"></i>
-              </div>
-              <div class="stat-content">
-                <div class="stat-number">{{ stat.value }}</div>
-                <div class="stat-label">{{ stat.label }}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Imagen de perfil con efectos -->
-        <div class="about-image">
-          <div class="image-container">
-            <img src="../../../assets/images/about-me/Foto.png" 
-                 alt="Joaquín Viñolo" 
-                 class="profile-image">
-            <div class="image-glow"></div>
-            <div class="floating-badges">
-              <div class="badge" *ngFor="let badge of floatingBadges">
-                <i [class]="badge.icon"></i>
-                <span>{{ badge.text }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Experiencia y habilidades -->
-      <div class="experience-section">
-        <div class="experience-card">
-          <div class="card-header">
-            <i class="bi bi-cloud"></i>
-            <h3>Arquitectura Cloud & AWS</h3>
-          </div>
-          <p class="card-description">
-            Especializado en <span class="highlight">arquitectura hexagonal</span> y 
-            <span class="highlight">microservicios serverless</span> en AWS Lambda. 
-            Experiencia en <span class="highlight">Python</span>, 
-            <span class="highlight">API Gateway</span> 
-            y <span class="highlight">Custom Layers</span>.
-          </p>
-        </div>
-
-        <div class="experience-card">
-          <div class="card-header">
-            <i class="bi bi-plug"></i>
-            <h3>Integraciones Corporativas</h3>
-          </div>
-          <p class="card-description">
-            Experiencia en <span class="highlight">integraciones complejas</span>, 
-            <span class="highlight">automatizaciones</span>, 
-            <span class="highlight">bots inteligentes</span> y 
-            <span class="highlight">APIs corporativas</span>.
-          </p>
-        </div>
-
-        <div class="experience-card">
-          <div class="card-header">
-            <i class="bi bi-people"></i>
-            <h3>Comunicación & Liderazgo</h3>
-          </div>
-          <p class="card-description">
-            Trabajo directo con <span class="highlight">clientes</span>, 
-            facilitación de <span class="highlight">workshops</span>, 
-            <span class="highlight">demos</span> y traducción de necesidades 
-            técnicas a requerimientos claros.
-          </p>
-        </div>
-      </div>
-
-      <!-- Call to action -->
-      <div class="about-cta">
-        <div class="cta-content">
-          <h3>¿Interesado en colaborar?</h3>
-          <p>Estoy abierto a nuevas oportunidades y proyectos desafiantes</p>
-          <div class="cta-buttons">
-            <a href="#contact" class="btn btn-primary btn-lg">
-              <i class="bi bi-envelope"></i>
-              <span>Contactar</span>
-            </a>
-            <a href="../../../assets/document/Programador CV Joaquín Viñolo.pdf.pdf" 
-               class="btn btn-outline btn-lg" 
-               download>
-              <i class="bi bi-download"></i>
-              <span>Descargar CV</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<section id="about" class="about-section section-wrap" aria-labelledby="about-heading">
+  <div class="section-inner">
+    <header class="about-header">
+      <span class="section-eyebrow" appScrollReveal [revealDelay]="0">Sobre mí</span>
+      <h2 id="about-heading" class="section-heading" appScrollReveal [revealDelay]="80">
+        Desarrollo con criterio de producto, no solo código.
+      </h2>
+      <p class="section-lead" appScrollReveal revealVariant="fade" [revealDelay]="160">
+        Análisis funcional e implementación técnica para problemas reales, con soluciones mantenibles e integraciones útiles.
+      </p>
+    </header>
+
+    <div class="about-pillars" role="list" aria-label="Pilares profesionales">
+      <div class="pillar"
+           *ngFor="let pillar of pillars; let i = index"
+           role="listitem"
+           appScrollReveal
+           [revealDelay]="i * 80">
+        <span class="pillar-value">{{ pillar.value }}</span>
+        <span class="pillar-label">{{ pillar.label }}</span>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <article class="panel-card value-block card-fill"
+               *ngFor="let block of valueBlocks; let i = index"
+               appScrollReveal
+               [revealDelay]="i * 100">
+        <div class="value-icon" aria-hidden="true">
+          <i [class]="'bi ' + block.icon"></i>
+        </div>
+        <h3 class="value-title">{{ block.title }}</h3>
+        <p class="value-desc">{{ block.description }}</p>
+      </article>
+    </div>
+
+    <div class="section-cta" appScrollReveal revealVariant="fade" [revealDelay]="80">
+      <h3>¿Buscás alguien que entienda el negocio y lo ejecute bien?</h3>
+      <p>Revisá los proyectos reales o escribime para conversar sobre tu caso.</p>
+      <div class="cta-row">
+        <a href="#projects" class="btn btn-primary btn-lg">
+          <i class="bi bi-folder2-open" aria-hidden="true"></i>
+          Ver proyectos
+        </a>
+        <a href="#contact" class="btn btn-outline btn-lg">
+          <i class="bi bi-envelope" aria-hidden="true"></i>
+          Contactarme
+        </a>
+        <a [href]="cvUrl" class="btn btn-ghost btn-lg" download rel="noopener">
+          <i class="bi bi-file-earmark-arrow-down" aria-hidden="true"></i>
+          Descargar CV
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

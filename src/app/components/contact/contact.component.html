@@ -1,185 +1,118 @@
-<!-- Sección Contacto Espectacular -->
-<section id="contact" class="contact-section">
-  <!-- Partículas de fondo -->
-  <div class="particles-container">
-    <div class="particle" *ngFor="let particle of particles"></div>
-  </div>
-  
-  <!-- Gradientes animados -->
-  <div class="section-background">
-    <div class="gradient-orb orb-1"></div>
-    <div class="gradient-orb orb-2"></div>
-    <div class="gradient-orb orb-3"></div>
-  </div>
-
-  <div class="contact-container">
-    <div class="contact-grid">
-      <!-- Información de contacto -->
-      <div class="contact-info">
-        <h2>¡Hablemos!</h2>
-        <p>
-          ¿Tienes un proyecto en mente? Me encantaría conocer más sobre tu idea 
-          y cómo puedo ayudarte a hacerla realidad. No dudes en contactarme.
-        </p>
-        
-        <div class="contact-details">
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="bi bi-envelope"></i>
-            </div>
-            <div class="contact-text">
-              <h4>Email</h4>
-              <p>Contacto directo</p>
-            </div>
-          </div>
-          
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="bi bi-phone"></i>
-            </div>
-            <div class="contact-text">
-              <h4>Teléfono</h4>
-              <p>Disponible por WhatsApp</p>
-            </div>
-          </div>
-          
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="bi bi-geo-alt"></i>
-            </div>
-            <div class="contact-text">
-              <h4>Ubicación</h4>
-              <p>Mendoza, Argentina</p>
-            </div>
-          </div>
-          
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="bi bi-clock"></i>
-            </div>
-            <div class="contact-text">
-              <h4>Horario</h4>
-              <p>Lun - Vie, 9:00 - 18:00</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Formulario de contacto -->
-      <div class="contact-form">
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit($event)">
-          
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name" class="form-label">Nombre *</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                formControlName="name"
-                class="form-input"
-                [class.error]="isFieldInvalid('name')"
-                [class.success]="isFieldValid('name')"
-                placeholder="Tu nombre completo"
-              />
-              <div *ngIf="isFieldInvalid('name')" class="error-message">
-                <i class="bi bi-exclamation-circle"></i>
-                {{ getFieldError('name') }}
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label for="email" class="form-label">Email *</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                formControlName="email"
-                class="form-input"
-                [class.error]="isFieldInvalid('email')"
-                [class.success]="isFieldValid('email')"
-                placeholder="tu@email.com"
-              />
-              <div *ngIf="isFieldInvalid('email')" class="error-message">
-                <i class="bi bi-exclamation-circle"></i>
-                {{ getFieldError('email') }}
-              </div>
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label for="subject" class="form-label">Asunto *</label>
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              formControlName="subject"
-              class="form-input"
-              [class.error]="isFieldInvalid('subject')"
-              [class.success]="isFieldValid('subject')"
-              placeholder="¿De qué quieres hablar?"
-            />
-            <div *ngIf="isFieldInvalid('subject')" class="error-message">
-              <i class="bi bi-exclamation-circle"></i>
-              {{ getFieldError('subject') }}
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label for="message" class="form-label">Mensaje *</label>
-            <textarea
-              id="message"
-              name="message"
-              formControlName="message"
-              class="form-textarea"
-              [class.error]="isFieldInvalid('message')"
-              [class.success]="isFieldValid('message')"
-              placeholder="Cuéntame más sobre tu proyecto..."
-            ></textarea>
-            <div *ngIf="isFieldInvalid('message')" class="error-message">
-              <i class="bi bi-exclamation-circle"></i>
-              {{ getFieldError('message') }}
-            </div>
-          </div>
-          
-          <button
-            type="submit"
-            class="btn btn-primary btn-lg form-submit"
-            [disabled]="isSubmitting"
-          >
-            <span *ngIf="!isSubmitting" class="btn-content">
-              <i class="bi bi-send"></i>
-              Enviar Mensaje
-            </span>
-            <span *ngIf="isSubmitting" class="btn-content loading">
-              <div class="spinner"></div>
-              Enviando...
-            </span>
-          </button>
-          
-          <div *ngIf="submitSuccess" class="success-message">
-            <div class="success-icon">
-              <i class="bi bi-check-circle-fill"></i>
-            </div>
-            <div class="success-content">
-              <h4>¡Mensaje Enviado!</h4>
-              <p>Gracias por contactarme. He recibido tu mensaje y te responderé en las próximas 24 horas.</p>
-            </div>
-          </div>
-          
-          <div *ngIf="submitError" class="error-message">
-            <div class="error-icon">
-              <i class="bi bi-exclamation-triangle-fill"></i>
-            </div>
-            <div class="error-content">
-              <h4>Error al Enviar</h4>
-              <p>Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo.</p>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-
+<section id="contact" class="contact-section section-wrap" aria-labelledby="contact-heading">
+  <div class="section-inner">
+    <header class="contact-header">
+      <span class="section-eyebrow" appScrollReveal [revealDelay]="0">Contacto</span>
+      <h2 id="contact-heading" class="section-heading" appScrollReveal [revealDelay]="80">
+        ¿Tenés un proyecto, producto u oportunidad para mejorar?
+      </h2>
+      <p class="section-lead" appScrollReveal revealVariant="fade" [revealDelay]="160">
+        Puedo ayudarte con desarrollo Angular, integraciones API, automatizaciones o mejora de sistemas existentes.
+      </p>
+    </header>
+
+    <div class="contact-quick-actions" appScrollReveal [revealDelay]="240">
+      <a [href]="whatsappUrl"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn btn-primary btn-lg quick-action">
+        <i class="bi bi-whatsapp" aria-hidden="true"></i>
+        Escribirme por WhatsApp
+      </a>
+      <a [href]="emailUrl"
+         class="btn btn-outline btn-lg quick-action">
+        <i class="bi bi-envelope" aria-hidden="true"></i>
+        Enviar email
+      </a>
+      <a [href]="linkedinUrl"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn btn-ghost btn-lg quick-action">
+        <i class="bi bi-linkedin" aria-hidden="true"></i>
+        Ver LinkedIn
+      </a>
+    </div>
+
+    <div class="contact-layout">
+      <aside class="contact-aside panel-card" appScrollReveal revealVariant="left" [revealDelay]="120">
+        <h3 class="aside-title">Datos de contacto</h3>
+        <ul class="contact-details">
+          <li>
+            <i class="bi bi-geo-alt" aria-hidden="true"></i>
+            <span>Mendoza, Argentina</span>
+          </li>
+          <li>
+            <i class="bi bi-clock" aria-hidden="true"></i>
+            <span>Lun — Vie, 9:00 — 18:00</span>
+          </li>
+          <li>
+            <i class="bi bi-reply" aria-hidden="true"></i>
+            <span>Respuesta en menos de 24 h</span>
+          </li>
+        </ul>
+        <p class="aside-note">
+          Si tenés un brief o alcance definido, incluilo en el mensaje.
+          Cuanto más contexto, mejor puedo responder.
+        </p>
+      </aside>
+
+      <div class="contact-form panel-card" appScrollReveal revealVariant="right" [revealDelay]="200">
+        <h3 class="form-title">O enviame un mensaje</h3>
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit($event)" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name" class="form-label">Nombre *</label>
+              <input type="text" id="name" formControlName="name" class="form-input"
+                     [class.error]="isFieldInvalid('name')"
+                     [class.success]="isFieldValid('name')"
+                     placeholder="Tu nombre" autocomplete="name">
+              <span *ngIf="isFieldInvalid('name')" class="field-error">{{ getFieldError('name') }}</span>
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Email *</label>
+              <input type="email" id="email" formControlName="email" class="form-input"
+                     [class.error]="isFieldInvalid('email')"
+                     [class.success]="isFieldValid('email')"
+                     placeholder="tu@email.com" autocomplete="email">
+              <span *ngIf="isFieldInvalid('email')" class="field-error">{{ getFieldError('email') }}</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="subject" class="form-label">Asunto *</label>
+            <input type="text" id="subject" formControlName="subject" class="form-input"
+                   [class.error]="isFieldInvalid('subject')"
+                   [class.success]="isFieldValid('subject')"
+                   placeholder="Ej: Aplicación SPA interna / Integración API">
+            <span *ngIf="isFieldInvalid('subject')" class="field-error">{{ getFieldError('subject') }}</span>
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">Mensaje *</label>
+            <textarea id="message" formControlName="message" class="form-textarea" rows="5"
+                      [class.error]="isFieldInvalid('message')"
+                      [class.success]="isFieldValid('message')"
+                      placeholder="Contame el contexto, el problema y qué necesitás resolver."></textarea>
+            <span *ngIf="isFieldInvalid('message')" class="field-error">{{ getFieldError('message') }}</span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg form-submit" [disabled]="isSubmitting">
+            <span *ngIf="!isSubmitting">
+              <i class="bi bi-send" aria-hidden="true"></i>
+              Enviar mensaje
+            </span>
+            <span *ngIf="isSubmitting">Enviando...</span>
+          </button>
+
+          <div *ngIf="submitSuccess" class="form-feedback form-feedback--success" role="status">
+            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+            Mensaje enviado. Te respondo en menos de 24 horas.
+          </div>
+          <div *ngIf="submitError" class="form-feedback form-feedback--error" role="alert">
+            <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
+            Hubo un error. Probá de nuevo o escribime por WhatsApp.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

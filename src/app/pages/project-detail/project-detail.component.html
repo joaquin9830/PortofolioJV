@@ -1,0 +1,112 @@
+<ng-container *ngIf="project as p">
+  <main class="case-study">
+    <div class="case-study-container">
+      <nav class="case-study-nav" aria-label="Navegación del caso de estudio">
+        <button class="back-button" (click)="goBack()" type="button">
+          <i class="bi bi-arrow-left" aria-hidden="true"></i>
+          <span>Volver a proyectos</span>
+        </button>
+      </nav>
+
+      <header class="case-study-header">
+        <div class="case-study-meta">
+          <span class="case-badge" [attr.data-category]="p.category">
+            {{ getCategoryName(p.category) }}
+          </span>
+          <span class="case-status" [attr.data-status]="p.status">
+            {{ getStatusLabel(p.status) }}
+          </span>
+          <span class="case-date">{{ p.date }}</span>
+        </div>
+
+        <h1 class="case-study-title">{{ p.title }}</h1>
+        <p class="case-study-subtitle">{{ p.subtitle }}</p>
+        <p class="case-study-intro">{{ p.description }}</p>
+        <p *ngIf="p.confidential" class="case-confidential-notice" role="note">
+          <i class="bi bi-shield-lock" aria-hidden="true"></i>
+          {{ confidentialityNotice }}
+        </p>
+      </header>
+
+    <div class="case-study-hero">
+      <app-project-image [project]="p" variant="cover" loading="eager" imgClass="case-study-image"></app-project-image>
+    </div>
+
+      <div class="case-study-grid">
+        <section class="case-block" aria-labelledby="problem-heading">
+          <h2 id="problem-heading">Problema</h2>
+          <p>{{ p.problem }}</p>
+        </section>
+
+        <section class="case-block" aria-labelledby="solution-heading">
+          <h2 id="solution-heading">Solución</h2>
+          <p>{{ p.solution }}</p>
+        </section>
+
+        <section class="case-block" aria-labelledby="role-heading">
+          <h2 id="role-heading">Mi rol</h2>
+          <p>{{ p.role }}</p>
+        </section>
+
+        <section class="case-block case-block--highlight" aria-labelledby="impact-heading">
+          <h2 id="impact-heading">Impacto</h2>
+          <p>{{ p.impact }}</p>
+        </section>
+      </div>
+
+      <section class="case-features" aria-labelledby="features-heading">
+        <h2 id="features-heading">Funcionalidades clave</h2>
+        <ul class="features-list">
+          <li *ngFor="let feature of p.features">
+            <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
+            <span>{{ feature }}</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="case-stack" aria-labelledby="stack-heading">
+        <h2 id="stack-heading">Stack tecnológico</h2>
+        <div class="tech-tags">
+          <span class="tech-tag" *ngFor="let tech of p.technologies">{{ tech }}</span>
+        </div>
+      </section>
+
+      <section class="case-highlights" aria-labelledby="highlights-heading" *ngIf="p.highlights.length">
+        <h2 id="highlights-heading">Resultados</h2>
+        <div class="highlights-grid">
+          <div class="highlight-card" *ngFor="let highlight of p.highlights">
+            <i class="bi bi-lightning-fill" aria-hidden="true"></i>
+            <span>{{ highlight }}</span>
+          </div>
+        </div>
+      </section>
+
+      <footer class="case-study-cta">
+        <h2>¿Querés algo similar para tu proyecto?</h2>
+        <p>Aplicaciones web full stack SPA, integraciones cloud y automatizaciones con enfoque en resultados reales.</p>
+        <div class="cta-buttons">
+          <a routerLink="/" fragment="contact" class="btn btn-primary btn-lg">
+            <i class="bi bi-envelope" aria-hidden="true"></i>
+            Contactar
+          </a>
+          <a *ngIf="p.website"
+             [href]="p.website"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn btn-outline btn-lg">
+            <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+            Ver sitio en vivo
+          </a>
+          <a *ngIf="p.github"
+             [href]="p.github"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn btn-outline btn-lg">
+            <i class="bi bi-github" aria-hidden="true"></i>
+            Ver código
+          </a>
+        </div>
+      </footer>
+    </div>
+  </main>
+</ng-container>

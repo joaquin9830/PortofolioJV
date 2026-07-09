@@ -1,19 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-
-interface Particle {
-  x: number;
-  y: number;
-  size: number;
-  speedX: number;
-  speedY: number;
-  opacity: number;
-}
+import { Component } from '@angular/core';
 
 interface Service {
   title: string;
-  description: string;
+  problem: string;
+  deliverable: string;
+  approach: string;
   icon: string;
-  features: string[];
   technologies: string[];
 }
 
@@ -22,124 +14,55 @@ interface Service {
   templateUrl: './services.component.html',
   styleUrls: ['./services.component.css']
 })
-export class ServicesComponent implements OnInit {
-  particles: Particle[] = [];
-
+export class ServicesComponent {
   services: Service[] = [
     {
-      title: 'Arquitectura Hexagonal & Microservicios',
-      description: 'Diseño y desarrollo de microservicios serverless con separación clara de responsabilidades en capas handler → service → client → dispatcher.',
-      icon: 'bi-layers',
-      features: [
-        'Arquitectura hexagonal',
-        'Microservicios serverless',
-        'Separación de responsabilidades',
-        'Manejo de excepciones personalizadas'
-      ],
-      technologies: ['Python', 'AWS Lambda', 'Clean Architecture']
+      title: 'Aplicaciones web SPA empresariales',
+      problem: 'Equipos que operan con planillas, mails o sistemas desconectados.',
+      deliverable: 'SPA a medida con flujos, roles y módulos alineados al proceso.',
+      approach: 'Angular modular, arquitectura por dominio y despliegue escalable.',
+      icon: 'bi-window-stack',
+      technologies: ['Angular', 'TypeScript', 'REST API']
     },
     {
-      title: 'Integraciones Corporativas',
-      description: 'Implementación de clientes base con manejo de tokens OAuth2, caché de credenciales y llamadas seguras a servicios externos.',
-      icon: 'bi-plug',
-      features: [
-        'Integraciones complejas',
-        'Automatizaciones',
-        'Bots inteligentes',
-        'APIs corporativas'
-      ],
-      technologies: ['Python', 'Requests', 'OAuth2', 'API Integration']
-    },
-    {
-      title: 'Frontend Angular Avanzado',
-      description: 'Desarrollo de portales modulares y escalables con routing avanzado, formularios reactivos y componentes standalone.',
+      title: 'Frontend Angular profesional',
+      problem: 'Interfaces lentas, difíciles de mantener o sin estándar.',
+      deliverable: 'UI consistente, formularios reactivos y componentes reutilizables.',
+      approach: 'Design system propio, RxJS y código mantenible.',
       icon: 'bi-layout-text-window',
-      features: [
-        'Angular moderno',
-        'Formularios reactivos',
-        'Componentes standalone',
-        'Routing avanzado'
-      ],
-      technologies: ['Angular', 'TypeScript', 'RxJS', 'Bootstrap']
+      technologies: ['Angular', 'RxJS', 'SCSS']
     },
     {
-      title: 'Automatización & AWS',
-      description: 'Automatización de procesos complejos con AWS Lambda, Custom Layers y soluciones serverless escalables.',
-      icon: 'bi-gear-fill',
-      features: [
-        'Automatización de procesos',
-        'AWS Lambda avanzado',
-        'Custom Layers',
-        'Soluciones serverless'
-      ],
-      technologies: ['AWS Lambda', 'Python', 'Custom Layers', 'Serverless']
+      title: 'Integraciones API / Cloud',
+      problem: 'Sistemas que no se comunican o integraciones frágiles sin monitoreo.',
+      deliverable: 'Conectores seguros entre APIs, cloud y sistemas corporativos.',
+      approach: 'AWS Lambda, API Gateway, OAuth2 y logging.',
+      icon: 'bi-plug',
+      technologies: ['AWS Lambda', 'Python', 'API Gateway']
     },
     {
-      title: 'DevOps & CI/CD',
-      description: 'Configuración y despliegue de Lambdas en múltiples entornos con config.properties centralizados y pipelines automatizados.',
-      icon: 'bi-gear',
-      features: [
-        'CI/CD Pipelines',
-        'Gestión de entornos',
-        'ConfigParser',
-        'Despliegues automatizados'
-      ],
-      technologies: ['AWS Lambda', 'CI/CD', 'ConfigParser', 'DevOps']
+      title: 'Automatización de procesos',
+      problem: 'Tareas repetitivas que consumen tiempo y generan errores manuales.',
+      deliverable: 'Flujos automatizados con triggers, webhooks y serverless.',
+      approach: 'Lambdas, S3, colas y orquestación 24/7.',
+      icon: 'bi-lightning',
+      technologies: ['AWS Lambda', 'Python', 'CloudWatch']
     },
     {
-      title: 'Comunicación & Liderazgo Técnico',
-      description: 'Trabajo directo con stakeholders de negocio, facilitación de workshops, demos y traducción de necesidades técnicas.',
-      icon: 'bi-people',
-      features: [
-        'Comunicación con clientes',
-        'Facilitación de workshops',
-        'Demos con stakeholders',
-        'Documentación técnica'
-      ],
-      technologies: ['Soft Skills', 'Workshop Facilitation', 'Technical Communication', 'Documentation']
+      title: 'Optimización de productos existentes',
+      problem: 'Productos en producción con deuda técnica o UX degradada.',
+      deliverable: 'Mejoras incrementales: refactor, UX y performance.',
+      approach: 'Auditoría técnica, priorización por impacto e iteraciones.',
+      icon: 'bi-speedometer2',
+      technologies: ['Angular', 'Performance', 'Refactoring']
+    },
+    {
+      title: 'Documentación técnica y funcional',
+      problem: 'Conocimiento disperso que frena onboarding y decisiones.',
+      deliverable: 'Specs funcionales, diagramas y documentación de APIs.',
+      approach: 'Análisis funcional y documentación alineada al negocio.',
+      icon: 'bi-journal-text',
+      technologies: ['Análisis funcional', 'Swagger', 'Confluence']
     }
   ];
-
-  ngOnInit(): void {
-    this.generateParticles();
-    this.animateParticles();
-  }
-
-  private generateParticles(): void {
-    for (let i = 0; i < 25; i++) {
-      this.particles.push({
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight,
-        size: Math.random() * 2 + 1,
-        speedX: (Math.random() - 0.5) * 0.2,
-        speedY: (Math.random() - 0.5) * 0.2,
-        opacity: Math.random() * 0.2 + 0.1
-      });
-    }
-  }
-
-  private animateParticles(): void {
-    const animate = () => {
-      this.particles.forEach(particle => {
-        particle.x += particle.speedX;
-        particle.y += particle.speedY;
-
-        // Reset position if out of bounds
-        if (particle.x < 0 || particle.x > window.innerWidth) {
-          particle.speedX *= -1;
-        }
-        if (particle.y < 0 || particle.y > window.innerHeight) {
-          particle.speedY *= -1;
-        }
-
-        // Keep particles in bounds
-        particle.x = Math.max(0, Math.min(window.innerWidth, particle.x));
-        particle.y = Math.max(0, Math.min(window.innerHeight, particle.y));
-      });
-
-      requestAnimationFrame(animate);
-    };
-
-    animate();
-  }
 }

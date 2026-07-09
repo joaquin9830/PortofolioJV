@@ -37,8 +37,8 @@ export class HeaderComponent implements OnInit {
     this.updateScrollProgress();
   }
 
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll() {
+  @HostListener('window:scroll')
+  onWindowScroll(): void {
     this.updateScrollProgress();
     this.updateScrolledState();
     this.updateActiveSection();

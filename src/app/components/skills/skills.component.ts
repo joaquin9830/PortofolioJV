@@ -1,30 +1,14 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 
-interface Particle {
-  x: number;
-  y: number;
-  size: number;
-  speedX: number;
-  speedY: number;
-  opacity: number;
-}
-
-interface Skill {
+interface SkillItem {
   name: string;
   icon: string;
-  level: number;
 }
 
-interface SkillSection {
+interface SkillCategory {
   name: string;
-  icon: string;
-  skills: Skill[];
-}
-
-interface SkillStat {
-  value: string;
-  label: string;
-  icon: string;
+  description: string;
+  skills: SkillItem[];
 }
 
 @Component({
@@ -32,116 +16,73 @@ interface SkillStat {
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.css']
 })
-export class SkillsComponent implements OnInit {
-  particles: Particle[] = [];
-  isVisible = false;
-
-  skillsStats: SkillStat[] = [
-    { value: '25+', label: 'Tecnologías', icon: 'bi-code-slash' },
-    { value: '3+', label: 'Años de Experiencia', icon: 'bi-calendar-check' },
-    { value: '4', label: 'Categorías', icon: 'bi-grid-3x3' },
-    { value: 'AWS', label: 'Especialización', icon: 'bi-cloud' }
-  ];
-
-  skillsSections: SkillSection[] = [
+export class SkillsComponent {
+  categories: SkillCategory[] = [
     {
       name: 'Frontend',
-      icon: 'bi-layout-text-window',
+      description: 'Interfaces modulares, mantenibles y orientadas a producto.',
       skills: [
-        { name: 'Angular', icon: 'devicon-angularjs-plain colored', level: 0 },
-        { name: 'TypeScript', icon: 'devicon-typescript-plain colored', level: 0 },
-        { name: 'RxJS', icon: 'devicon-javascript-plain colored', level: 0 }, // no hay RxJS en devicon
-        { name: 'Reactive Forms', icon: 'bi-ui-checks-grid', level: 0 },
-        { name: 'Bootstrap', icon: 'devicon-bootstrap-plain colored', level: 0 },
-        { name: 'CSS Responsive', icon: 'devicon-css3-plain colored', level: 0 }
+        { name: 'Angular', icon: 'devicon-angularjs-plain colored' },
+        { name: 'TypeScript', icon: 'devicon-typescript-plain colored' },
+        { name: 'RxJS', icon: 'devicon-javascript-plain colored' },
+        { name: 'Reactive Forms', icon: 'bi-ui-checks-grid' },
+        { name: 'CSS / SCSS Responsive', icon: 'devicon-css3-plain colored' }
       ]
     },
     {
-      name: 'Backend & AWS',
-      icon: 'bi-server',
+      name: 'Backend / Cloud',
+      description: 'Integraciones, serverless y servicios en producción.',
       skills: [
-        { name: 'Python', icon: 'devicon-python-plain colored', level: 0 },
-        { name: 'AWS Lambda', icon: 'devicon-amazonwebservices-original colored', level: 0 },
-        { name: 'API Gateway', icon: 'bi-diagram-3', level: 0 },
-        { name: 'S3', icon: 'devicon-amazonwebservices-original colored', level: 0 },
-        { name: 'Custom Layers', icon: 'bi-layers', level: 0 }
+        { name: 'Python', icon: 'devicon-python-plain colored' },
+        { name: 'AWS Lambda', icon: 'devicon-amazonwebservices-original colored' },
+        { name: 'API Gateway', icon: 'bi-diagram-3' },
+        { name: 'S3 / CloudWatch', icon: 'devicon-amazonwebservices-original colored' },
+        { name: 'REST / OAuth2', icon: 'bi-plug' }
       ]
     },
     {
-      name: 'Arquitectura',
-      icon: 'bi-layers',
+      name: 'Producto / Análisis funcional',
+      description: 'Traducción de requerimientos y alineación con negocio.',
       skills: [
-        { name: 'Clean Architecture', icon: 'bi-hexagon', level: 0 },
-        { name: 'Microservices', icon: 'bi-diagram-3-fill', level: 0 },
-        { name: 'Separación por Dominios', icon: 'bi-diagram-3', level: 0 }
+        { name: 'Levantamiento de requerimientos', icon: 'bi-clipboard-data' },
+        { name: 'Documentación funcional', icon: 'bi-journal-text' },
+        { name: 'Diagramas de flujo', icon: 'bi-diagram-2' },
+        { name: 'Comunicación con stakeholders', icon: 'bi-people' },
+        { name: 'Estimación de esfuerzos', icon: 'bi-calendar-check' }
       ]
     },
     {
-      name: 'Habilidades Profesionales',
-      icon: 'bi-people',
+      name: 'Herramientas modernas',
+      description: 'Stack de desarrollo y despliegue del día a día.',
       skills: [
-        { name: 'Comunicación con Clientes', icon: 'bi-people', level: 0 },
-        { name: 'Facilitación de Workshops', icon: 'bi-easel', level: 0 },
-        { name: 'Demos con Stakeholders', icon: 'bi-easel2', level: 0 },
-        { name: 'Documentación Técnica', icon: 'bi-journal-code', level: 0 },
-        { name: 'Estimación de Esfuerzos', icon: 'bi-clipboard-check', level: 0 }
+        { name: 'Git / GitHub', icon: 'devicon-git-plain colored' },
+        { name: 'Firebase Hosting', icon: 'devicon-firebase-plain colored' },
+        { name: 'Formspree / APIs', icon: 'bi-cloud' },
+        { name: 'VS Code / Cursor', icon: 'bi-code-slash' },
+        { name: 'Bootstrap (layout)', icon: 'devicon-bootstrap-plain colored' }
+      ]
+    },
+    {
+      name: 'Testing / Performance',
+      description: 'Calidad, optimización y entregas confiables.',
+      skills: [
+        { name: 'Lazy loading / code splitting', icon: 'bi-boxes' },
+        { name: 'Optimización de bundles', icon: 'bi-speedometer' },
+        { name: 'SEO on-page', icon: 'bi-search' },
+        { name: 'Accesibilidad básica', icon: 'bi-universal-access' },
+        { name: 'Debugging & profiling', icon: 'bi-bug' }
+      ]
+    },
+    {
+      name: 'Habilidades blandas',
+      description: 'Competencias que sostienen la entrega técnica y el trabajo con el equipo.',
+      skills: [
+        { name: 'Comunicación clara', icon: 'bi-chat-dots' },
+        { name: 'Trabajo colaborativo', icon: 'bi-people' },
+        { name: 'Resolución de problemas', icon: 'bi-lightbulb' },
+        { name: 'Autonomía y proactividad', icon: 'bi-person-check' },
+        { name: 'Adaptabilidad', icon: 'bi-arrow-repeat' }
       ]
     }
   ];
-
-  ngOnInit(): void {
-    this.generateParticles();
-    this.animateParticles();
-    this.checkVisibility();
-  }
-
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll() {
-    this.checkVisibility();
-  }
-
-  private checkVisibility(): void {
-    const element = document.querySelector('.skills-categories');
-    if (element) {
-      const rect = element.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      this.isVisible = rect.top < windowHeight && rect.bottom > 0;
-    }
-  }
-
-  private generateParticles(): void {
-    for (let i = 0; i < 30; i++) {
-      this.particles.push({
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight,
-        size: Math.random() * 2 + 1,
-        speedX: (Math.random() - 0.5) * 0.3,
-        speedY: (Math.random() - 0.5) * 0.3,
-        opacity: Math.random() * 0.3 + 0.1
-      });
-    }
-  }
-
-  private animateParticles(): void {
-    const animate = () => {
-      this.particles.forEach(particle => {
-        particle.x += particle.speedX;
-        particle.y += particle.speedY;
-
-        if (particle.x < 0 || particle.x > window.innerWidth) {
-          particle.speedX *= -1;
-        }
-        if (particle.y < 0 || particle.y > window.innerHeight) {
-          particle.speedY *= -1;
-        }
-
-        particle.x = Math.max(0, Math.min(window.innerWidth, particle.x));
-        particle.y = Math.max(0, Math.min(window.innerHeight, particle.y));
-      });
-
-      requestAnimationFrame(animate);
-    };
-
-    animate();
-  }
 }

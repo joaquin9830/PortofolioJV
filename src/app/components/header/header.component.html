@@ -23,8 +23,8 @@
         data-bs-toggle="collapse" 
         data-bs-target="#navbarNav"
         aria-controls="navbarNav" 
-        aria-expanded="false" 
-        aria-label="Toggle navigation"
+        [attr.aria-expanded]="mobileMenuOpen"
+        aria-label="Abrir menú de navegación"
         (click)="toggleMobileMenu()"
       >
         <span class="hamburger">
@@ -37,7 +37,7 @@
       <div class="collapse navbar-collapse" id="navbarNav" [class.show]="mobileMenuOpen">
         <!-- Navegación principal -->
         <ul class="navbar-nav nav-main">
-          <li class="nav-item" *ngFor="let item of navItems; let i = index">
+          <li class="nav-item" *ngFor="let item of navItems">
             <a 
               class="nav-link" 
               [href]="item.href"

@@ -1,94 +1,129 @@
-<!-- Hero Section Espectacular -->
-<section id="banner" class="hero-section">
-  <!-- Partículas de fondo -->
-  <div class="particles-container">
-    <div class="particle" *ngFor="let particle of particles"></div>
-  </div>
-  
-  <!-- Gradiente animado de fondo -->
-  <div class="hero-background">
-    <div class="gradient-orb orb-1"></div>
-    <div class="gradient-orb orb-2"></div>
-    <div class="gradient-orb orb-3"></div>
-  </div>
-
-  <!-- Contenido principal -->
-  <div class="hero-container">
-    <div class="hero-content">
-      <!-- Texto principal con animaciones -->
-      <div class="hero-text">
-        <h1 class="hero-title">
-          <span class="title-line">Joaquín</span>
-          <span class="title-line">Viñolo</span>
-        </h1>
-        
-        <div class="hero-subtitle">
-          <span class="subtitle-text">Desarrollador</span>
-          <span class="subtitle-highlight">Full Stack</span>
-        </div>
-        
-        <p class="hero-description">
-          Desarrollador <span class="highlight">Full Stack</span> especializado en 
-          <span class="highlight">portales custom</span> con <span class="highlight">AWS Lambda</span> 
-          y <span class="highlight">Angular</span>, con experiencia integrando 
-          <span class="highlight">APIs corporativas</span> y gestionando 
-          <span class="highlight">entornos cloud</span>. Diseño soluciones escalables 
-          que combinan <span class="highlight">Python</span>, <span class="highlight">infraestructura serverless</span> 
-          y <span class="highlight">trato directo con clientes</span> de negocio para 
-          alinear la tecnología con sus necesidades.
-        </p>
-      </div>
-
-      <!-- Imagen de perfil con efectos 3D -->
-      <div class="hero-image">
-        <div class="image-container">
-          <img src="../../../assets/images/about-me/Foto.png" 
-               class="profile-image" 
-               alt="Joaquín Viñolo">
-          <div class="image-glow"></div>
-          <!-- <div class="floating-elements">
-            <div class="floating-icon" 
-                 *ngFor="let icon of floatingIcons; let i = index"
-                 [style.animation-delay]="icon.delay + 's'">
-              <i [class]="icon.class"></i>
-            </div>
-          </div> -->
-        </div>
-      </div>
-    </div>
-
-    <!-- Tags de tecnologías -->
-    <div class="tech-tags">
-      <div class="tag" *ngFor="let tech of technologies; let i = index">
-        <span>{{ tech.name }}</span>
-      </div>
-    </div>
-
-    <!-- Botones de acción -->
-    <div class="hero-actions">
-      <a href="#about" class="btn btn-primary btn-lg primary-action">
-        <i class="bi bi-person"></i>
-        <span>Conóceme</span>
-        <div class="btn-ripple"></div>
-      </a>
-      
-      <a href="#projects" class="btn btn-outline btn-lg secondary-action">
-        <i class="bi bi-folder"></i>
-        <span>Ver Proyectos</span>
-      </a>
-      
-      <a href="#contact" class="btn btn-ghost btn-lg contact-action">
-        <i class="bi bi-envelope"></i>
-        <span>Contactar</span>
-      </a>
-    </div>
-
-    <!-- Indicador de scroll -->
-    <div class="scroll-indicator">
-      <div class="scroll-text">Desplázate</div>
-      <div class="scroll-arrow">
-        <i class="bi bi-chevron-down"></i>
-      </div>
-    </div>
-  </div>
-</section>
+<section id="home" class="hero-section" aria-labelledby="hero-headline">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+
+  <div class="hero-container">
+    <div class="hero-layout">
+
+      <div class="hero-copy">
+        <div class="hero-badge" role="note" appScrollReveal [revealDelay]="0">
+          <span class="badge-dot" aria-hidden="true"></span>
+          <span>Desarrollador Angular / Full Stack</span>
+        </div>
+
+        <h1 id="hero-headline" class="hero-headline" appScrollReveal [revealDelay]="80">
+          Construyo soluciones web modernas para procesos <span class="nowrap-soft">de negocio</span> reales.
+        </h1>
+
+        <p class="hero-lead" appScrollReveal revealVariant="fade" [revealDelay]="160">
+          Soy Joaquín Viñolo, desarrollador <span class="nowrap-soft">Angular / Full Stack</span>.
+          Trabajo desde el análisis funcional hasta la implementación, creando sistemas mantenibles,
+          integraciones API y mejoras sobre productos existentes.
+        </p>
+
+        <div class="hero-metrics" role="list" aria-label="Métricas profesionales">
+          <div class="metric"
+               *ngFor="let metric of metrics; let i = index"
+               role="listitem"
+               appScrollReveal
+               [revealDelay]="240 + i * 80">
+            <span class="metric-value">{{ metric.value }}</span>
+            <span class="metric-label">{{ metric.label }}</span>
+          </div>
+        </div>
+
+        <div class="hero-ctas">
+          <a href="#projects"
+             class="btn btn-primary btn-lg"
+             appScrollReveal
+             [revealDelay]="400"
+             (click)="scrollTo('projects', $event)">
+            <i class="bi bi-folder2-open" aria-hidden="true"></i>
+            <span>Ver proyectos reales</span>
+          </a>
+          <a href="#contact"
+             class="btn btn-outline btn-lg"
+             appScrollReveal
+             [revealDelay]="480"
+             (click)="scrollTo('contact', $event)">
+            <i class="bi bi-envelope" aria-hidden="true"></i>
+            <span>Contactarme</span>
+          </a>
+          <a [href]="cvUrl"
+             class="btn btn-ghost btn-lg"
+             appScrollReveal
+             [revealDelay]="560"
+             download
+             rel="noopener">
+            <i class="bi bi-file-earmark-arrow-down" aria-hidden="true"></i>
+            <span>Descargar CV</span>
+          </a>
+        </div>
+      </div>
+
+      <aside class="hero-panel" aria-label="Perfil profesional y proyectos destacados">
+        <div class="profile-card" appScrollReveal revealVariant="right" [revealDelay]="120">
+          <div class="profile-photo-wrap">
+            <img src="assets/images/about-me/Foto.png"
+                 alt="Joaquín Viñolo — Desarrollador Angular / Full Stack"
+                 class="profile-photo"
+                 width="168"
+                 height="168"
+                 loading="eager"
+                 decoding="async">
+          </div>
+
+          <div class="profile-identity">
+            <h2 class="profile-name">Joaquín Viñolo</h2>
+            <p class="profile-role"><span class="nowrap-soft">Angular / Full Stack</span> Developer</p>
+            <span class="profile-status">
+              <span class="status-dot" aria-hidden="true"></span>
+              Disponible
+            </span>
+            <p class="profile-bio">
+              Frontend, integraciones y soluciones web orientadas a producto.
+            </p>
+            <div class="profile-badges" aria-label="Stack principal">
+              <span class="profile-badge" *ngFor="let tech of profileTechBadges">{{ tech }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-projects-block" appScrollReveal revealVariant="scale" [revealDelay]="200">
+          <h3 class="panel-section-title">Proyectos destacados</h3>
+
+          <div class="panel-projects">
+            <a *ngFor="let project of featuredProjects; let i = index"
+               [routerLink]="['/proyecto', project.slug]"
+               class="panel-project-card"
+               appScrollReveal
+               [revealDelay]="280 + i * 80">
+              <div class="project-card-thumb">
+                <app-project-image [project]="project"
+                                   variant="thumb"
+                                   [loading]="i === 0 ? 'eager' : 'lazy'"></app-project-image>
+              </div>
+              <div class="project-card-body">
+                <h4 class="project-card-title">{{ project.title }}</h4>
+                <span class="project-category">{{ getCategoryName(project.category) }}</span>
+                <div class="project-card-stack">
+                  <span class="stack-chip" *ngFor="let tech of project.technologies.slice(0, 3)">
+                    {{ tech }}
+                  </span>
+                </div>
+              </div>
+              <i class="bi bi-arrow-up-right project-card-arrow" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <a href="#projects"
+             class="panel-footer-link link-animated"
+             (click)="scrollTo('projects', $event)">
+            Ver todos los proyectos
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
