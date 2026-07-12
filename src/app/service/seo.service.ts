@@ -1,14 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
-import { Inject } from '@angular/core';
 import {
+  absoluteAssetUrl,
+  absoluteSiteUrl,
   OG_DEFAULT_HEIGHT,
   OG_DEFAULT_PATH,
   OG_DEFAULT_WIDTH,
-  SITE_BASE_URL
+  PROJECT_IMAGE_DIMENSIONS,
+  SITE_NAME,
+  SITE_URL
 } from '../constants/site.constants';
-import { PROJECT_IMAGE_DIMENSIONS } from '../constants/site.constants';
 
 export interface SeoConfig {
   title: string;
@@ -25,7 +27,7 @@ export interface SeoConfig {
   providedIn: 'root'
 })
 export class SeoService {
-  private readonly siteName = 'Joaquín Viñolo';
+  private readonly siteName = SITE_NAME;
 
   constructor(
     private title: Title,
@@ -34,11 +36,11 @@ export class SeoService {
   ) {}
 
   getAbsoluteAssetUrl(assetPath: string): string {
-    return `${SITE_BASE_URL}/${assetPath.replace(/^\//, '')}`;
+    return absoluteAssetUrl(assetPath);
   }
 
   getDefaultOgImageUrl(): string {
-    return this.getAbsoluteAssetUrl(OG_DEFAULT_PATH);
+    return absoluteAssetUrl(OG_DEFAULT_PATH);
   }
 
   update(config: SeoConfig): void {
@@ -46,11 +48,11 @@ export class SeoService {
       ? config.title
       : `${config.title} | ${this.siteName}`;
 
-    const url = `${SITE_BASE_URL}${config.path ?? '/'}`;
+    const url = absoluteSiteUrl(config.path ?? '/');
     const imagePath = config.image ?? OG_DEFAULT_PATH;
     const image = imagePath.startsWith('http')
       ? imagePath
-      : this.getAbsoluteAssetUrl(imagePath);
+      : absoluteAssetUrl(imagePath);
     const imageWidth = config.imageWidth ?? OG_DEFAULT_WIDTH;
     const imageHeight = config.imageHeight ?? OG_DEFAULT_HEIGHT;
     const type = config.type ?? 'website';
@@ -60,6 +62,7 @@ export class SeoService {
     this.meta.updateTag({ name: 'description', content: config.description });
     this.meta.updateTag({ name: 'robots', content: robots });
 
+    this.meta.updateTag({ property: 'og:site_name', content: this.siteName });
     this.meta.updateTag({ property: 'og:title', content: fullTitle });
     this.meta.updateTag({ property: 'og:description', content: config.description });
     this.meta.updateTag({ property: 'og:url', content: url });
@@ -67,18 +70,20 @@ export class SeoService {
     this.meta.updateTag({ property: 'og:image:width', content: String(imageWidth) });
     this.meta.updateTag({ property: 'og:image:height', content: String(imageHeight) });
     this.meta.updateTag({ property: 'og:type', content: type });
+    this.meta.updateTag({ property: 'og:locale', content: 'es_AR' });
 
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:title', content: fullTitle });
     this.meta.updateTag({ name: 'twitter:description', content: config.description });
     this.meta.updateTag({ name: 'twitter:image', content: image });
+    this.meta.updateTag({ name: 'twitter:url', content: url });
 
     this.setCanonical(url);
   }
 
   setHomeDefaults(): void {
     this.update({
-      title: 'Joaquín Viñolo | Desarrollador Angular & Full Stack',
+      title: `${SITE_NAME} | Desarrollador Angular & Full Stack`,
       description:
         'Desarrollador Angular y Full Stack especializado en aplicaciones web full stack SPA, sistemas web de gestión, integraciones cloud, automatizaciones AWS Lambda y soluciones empresariales.',
       path: '/',
@@ -107,6 +112,11 @@ export class SeoService {
       path,
       type: 'article'
     });
+  }
+
+  /** Dominio canónico de producción. */
+  getSiteUrl(): string {
+    return SITE_URL;
   }
 
   private setCanonical(url: string): void {

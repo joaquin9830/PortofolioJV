@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SITE_URL } from '../../constants/site.constants';
 
 @Component({
   selector: 'app-contact',
@@ -37,7 +38,7 @@ export class ContactComponent {
       formData.append('Asunto', this.contactForm.get('subject')?.value);
       formData.append('Mensaje', this.contactForm.get('message')?.value);
       formData.append('_subject', 'Nuevo mensaje desde Portfolio — Joaquín Viñolo');
-      formData.append('_next', 'https://joaquinvinolo.com/#contact');
+      formData.append('_next', `${SITE_URL}/#contact`);
       formData.append('_captcha', 'false');
 
       fetch('https://formspree.io/f/mwpnjvpl', {
