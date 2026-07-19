@@ -6,7 +6,7 @@ export const SITE_BASE_URL = SITE_URL;
 
 export const SITE_NAME = 'Joaquín Viñolo';
 
-export const CV_PATH = 'assets/document/CV_Joaquin_Vinolo.pdf';
+export const CV_PATH = 'assets/document/CV_Joaquin_Vinolo_Full_Stack_Developer.pdf';
 
 export const OG_DEFAULT_PATH = 'assets/images/og/og-default.jpg';
 
