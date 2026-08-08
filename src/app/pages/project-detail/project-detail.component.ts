@@ -8,9 +8,10 @@ import { ProjectService } from '../../service/project.service';
 import { SeoService } from '../../service/seo.service';
 
 @Component({
-  selector: 'app-project-detail',
-  templateUrl: './project-detail.component.html',
-  styleUrls: ['./project-detail.component.css']
+    selector: 'app-project-detail',
+    templateUrl: './project-detail.component.html',
+    styleUrls: ['./project-detail.component.css'],
+    standalone: false
 })
 export class ProjectDetailComponent implements OnInit {
   project: Project | null = null;

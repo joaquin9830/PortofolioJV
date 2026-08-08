@@ -6,8 +6,8 @@ export type ProjectImageVariant = 'thumb' | 'cover';
 export type ProjectImageFit = 'cover' | 'contain';
 
 @Component({
-  selector: 'app-project-image',
-  template: `
+    selector: 'app-project-image',
+    template: `
     <picture class="project-picture" [class.project-picture--contain]="fit === 'contain'">
       <source [srcset]="webpSrc" type="image/webp">
       <img [src]="webpSrc"
@@ -20,7 +20,7 @@ export type ProjectImageFit = 'cover' | 'contain';
            [style.object-fit]="fit">
     </picture>
   `,
-  styles: [`
+    styles: [`
     :host {
       display: block;
       width: 100%;
@@ -37,7 +37,8 @@ export type ProjectImageFit = 'cover' | 'contain';
     .project-picture--contain img {
       object-position: center center;
     }
-  `]
+  `],
+    standalone: false
 })
 export class ProjectImageComponent {
   @Input() project!: Project;

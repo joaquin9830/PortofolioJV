@@ -12,7 +12,8 @@ import { isPlatformBrowser } from '@angular/common';
 export type RevealVariant = 'up' | 'fade' | 'scale' | 'left' | 'right';
 
 @Directive({
-  selector: '[appScrollReveal]'
+    selector: '[appScrollReveal]',
+    standalone: false
 })
 export class ScrollRevealDirective implements OnInit, OnDestroy {
   @Input() revealDelay = 0;

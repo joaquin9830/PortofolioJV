@@ -1,9 +1,10 @@
 import { Component, HostListener } from '@angular/core';
 
 @Component({
-  selector: 'app-button-scroll',
-  templateUrl: './button-scroll.component.html',
-  styleUrls: ['./button-scroll.component.css']
+    selector: 'app-button-scroll',
+    templateUrl: './button-scroll.component.html',
+    styleUrls: ['./button-scroll.component.css'],
+    standalone: false
 })
 export class ButtonScrollComponent {
   showButton: boolean = false;

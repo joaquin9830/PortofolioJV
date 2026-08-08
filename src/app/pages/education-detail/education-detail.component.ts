@@ -6,9 +6,10 @@ import { NavigationScrollService } from '../../service/navigation-scroll.service
 import { SeoService } from '../../service/seo.service';
 
 @Component({
-  selector: 'app-education-detail',
-  templateUrl: './education-detail.component.html',
-  styleUrls: []
+    selector: 'app-education-detail',
+    templateUrl: './education-detail.component.html',
+    styleUrls: [],
+    standalone: false
 })
 export class EducationDetailComponent implements OnInit {
   readonly cvPath = CV_PATH;

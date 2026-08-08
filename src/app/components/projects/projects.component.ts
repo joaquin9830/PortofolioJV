@@ -4,9 +4,10 @@ import { Project } from '../../model/project.model';
 import { ProjectService } from '../../service/project.service';
 
 @Component({
-  selector: 'app-projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css']
+    selector: 'app-projects',
+    templateUrl: './projects.component.html',
+    styleUrls: ['./projects.component.css'],
+    standalone: false
 })
 export class ProjectsComponent implements OnInit {
   @ViewChild('projectModal') projectModalRef?: ElementRef<HTMLElement>;

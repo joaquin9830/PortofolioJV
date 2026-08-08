@@ -2,11 +2,11 @@ import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { DevIconsService } from '../../service/simple-icons.service';
 
 @Component({
-  selector: 'app-simple-icon',
-  template: `
+    selector: 'app-simple-icon',
+    template: `
     <i [class]="iconClass" [style.font-size]="size + 'px'" [style.color]="color"></i>
   `,
-  styles: [`
+    styles: [`
     :host {
       display: inline-block;
     }
@@ -15,7 +15,8 @@ import { DevIconsService } from '../../service/simple-icons.service';
       align-items: center;
       justify-content: center;
     }
-  `]
+  `],
+    standalone: false
 })
 export class SimpleIconComponent implements OnInit, OnChanges {
   @Input() iconName: string = '';

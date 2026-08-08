@@ -6,9 +6,10 @@ import { NavigationScrollService } from '../../service/navigation-scroll.service
 import { SeoService } from '../../service/seo.service';
 
 @Component({
-  selector: 'app-education-alura',
-  templateUrl: './education-alura.component.html',
-  styleUrls: []
+    selector: 'app-education-alura',
+    templateUrl: './education-alura.component.html',
+    styleUrls: [],
+    standalone: false
 })
 export class EducationAluraComponent implements OnInit {
   readonly cvPath = CV_PATH;

@@ -11,7 +11,7 @@ import {DevIconsService} from '../app/service/simple-icons.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import {HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AboutComponent } from './components/about/about.component';
@@ -32,39 +32,32 @@ import { ProjectDetailComponent } from './pages/project-detail/project-detail.co
 import { ScrollRevealDirective } from './directives/scroll-reveal.directive';
 
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    AboutComponent,
-    EducationComponent,
-    SkillsComponent,
-    ProjectsComponent,
-    EducationDetailComponent,
-    HomeComponent,
-    EducationAluraComponent,
-    EducationUtnComponent,
-    ButtonScrollComponent,
-    BannerComponent,
-    ServicesComponent,
-    ContactComponent,
-    SimpleIconComponent,
-    ProjectImageComponent,
-    ProjectDetailComponent,
-    ScrollRevealDirective
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    // Removemos Lucide Angular
-  ],
-  providers: [
-    CargarScriptsService,
-    DevIconsService
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+        AboutComponent,
+        EducationComponent,
+        SkillsComponent,
+        ProjectsComponent,
+        EducationDetailComponent,
+        HomeComponent,
+        EducationAluraComponent,
+        EducationUtnComponent,
+        ButtonScrollComponent,
+        BannerComponent,
+        ServicesComponent,
+        ContactComponent,
+        SimpleIconComponent,
+        ProjectImageComponent,
+        ProjectDetailComponent,
+        ScrollRevealDirective
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule], providers: [
+        CargarScriptsService,
+        DevIconsService,
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }
