@@ -41,6 +41,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://joaquinvinolo.com/proyecto/travesias-blog-profesional</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://joaquinvinolo.com/proyecto/metanoiazen-landing-page</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://joaquinvinolo.com/education-detail</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>

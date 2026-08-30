@@ -64,6 +64,7 @@
   text-transform: uppercase;
   color: var(--primary-400);
   background: rgba(14, 165, 233, 0.06);
+  max-width: 100%;
 }
 
 .badge-dot {
@@ -83,14 +84,14 @@
   margin: 0;
   letter-spacing: -0.02em;
   text-wrap: balance;
-  max-width: 18em;
+  max-width: 20em;
 }
 
 .hero-lead {
   font-size: var(--text-base);
   line-height: 1.7;
   color: var(--text-secondary);
-  max-width: 36em;
+  max-width: 32em;
   margin: 0;
   text-wrap: pretty;
 }

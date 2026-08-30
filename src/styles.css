@@ -1,5 +1,5 @@
-/* DevIcons */
-@import url('https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css');
+/* DevIcons — 2.17.0 incluye angular-plain, nestjs, rxjs, prisma, k6, githubactions */
+@import url('https://cdn.jsdelivr.net/npm/devicon@2.17.0/devicon.min.css');
 
 /* Estilos específicos para DevIcons */
 .devicon {

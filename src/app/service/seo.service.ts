@@ -83,9 +83,9 @@ export class SeoService {
 
   setHomeDefaults(): void {
     this.update({
-      title: `${SITE_NAME} | Desarrollador Angular & Full Stack`,
+      title: `${SITE_NAME} | Full Stack & AI Agent Developer`,
       description:
-        'Desarrollador Angular y Full Stack especializado en aplicaciones web full stack SPA, sistemas web de gestión, integraciones cloud, automatizaciones AWS Lambda y soluciones empresariales.',
+        'Full Stack & AI Agent Developer. Aplicaciones empresariales con Angular, NestJS, Python y AWS: APIs, automatización, agentic workflows, análisis funcional e integraciones cloud en producción.',
       path: '/',
       image: OG_DEFAULT_PATH,
       imageWidth: OG_DEFAULT_WIDTH,

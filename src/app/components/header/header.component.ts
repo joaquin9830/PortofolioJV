@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
   navItems: NavItem[] = [
     { id: 'home', label: 'Inicio', href: '#home', icon: 'bi bi-house' },
     { id: 'about', label: 'Sobre Mí', href: '#about', icon: 'bi bi-person' },
+    { id: 'experience', label: 'Experiencia', href: '#experience', icon: 'bi bi-briefcase' },
     { id: 'services', label: 'Servicios', href: '#services', icon: 'bi bi-gear' },
     { id: 'education', label: 'Educación', href: '#education', icon: 'bi bi-mortarboard' },
     { id: 'skills', label: 'Habilidades', href: '#skills', icon: 'bi bi-code-slash' },

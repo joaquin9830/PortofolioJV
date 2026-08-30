@@ -18,15 +18,15 @@ export class BannerComponent implements OnInit {
   featuredProjects: Project[] = [];
 
   metrics: HeroMetric[] = [
-    { value: '+3 años', label: 'usando Angular' },
-    { value: '7', label: 'proyectos documentados' },
-    { value: 'SPA & cloud', label: 'integraciones reales' },
-    { value: 'Frontend +', label: 'análisis funcional' }
+    { value: '4+ años', label: 'desarrollo de software' },
+    { value: '3.000+', label: 'usuarios en producción' },
+    { value: '20+', label: 'APIs e integraciones' },
+    { value: '30+', label: 'despliegues productivos' }
   ];
 
   readonly cvUrl = CV_PATH;
 
-  readonly profileTechBadges = ['Angular', 'TypeScript', 'APIs', 'AWS'];
+  readonly profileTechBadges = ['Angular', 'NestJS', 'Python', 'AWS', 'AI Agents'];
 
   constructor(private projectService: ProjectService) {}
 

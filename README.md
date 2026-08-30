@@ -1,4 +1,7 @@
 # Portfolio Personal
+
+Inventario completo de contenido (proyectos, habilidades, tecnologías, iconos, about, formación): [docs/CONTENIDO-PORTFOLIO.md](docs/CONTENIDO-PORTFOLIO.md).
+
 <h2>Descripción</h2>
 <p>Este es mi portfolio personal, desarrollado para mostrar mis habilidades y experiencia en desarrollo de software. El sitio está construido utilizando Angular y presenta una interfaz moderna y responsiva. Incluye secciones como "Sobre mí", "Servicios", "Proyectos", y más. Utilizo TypeScript, HTML, CSS, y Bootstrap para el diseño y la funcionalidad. El sitio está desplegado en Firebase, garantizando una experiencia rápida y segura para los visitantes.</p>
 Tecnologías Utilizadas

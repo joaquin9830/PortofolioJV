@@ -15,6 +15,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AboutComponent } from './components/about/about.component';
+import { ExperienceComponent } from './components/experience/experience.component';
 import { EducationComponent } from './components/education/education.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { ProjectsComponent } from './components/projects/projects.component';
@@ -37,6 +38,7 @@ import { ScrollRevealDirective } from './directives/scroll-reveal.directive';
         HeaderComponent,
         FooterComponent,
         AboutComponent,
+        ExperienceComponent,
         EducationComponent,
         SkillsComponent,
         ProjectsComponent,

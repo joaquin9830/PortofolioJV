@@ -1,29 +1,32 @@
-<section id="skills" class="skills-section section-wrap" aria-labelledby="skills-heading">
-  <div class="section-inner">
-    <header class="skills-header">
-      <span class="section-eyebrow" appScrollReveal [revealDelay]="0">Capacidades</span>
-      <h2 id="skills-heading" class="section-heading" appScrollReveal [revealDelay]="80">
-        Stack y habilidades con foco profesional.
-      </h2>
-      <p class="section-lead" appScrollReveal revealVariant="fade" [revealDelay]="160">
-        Organizadas por aporte al proyecto, no como lista decorativa de logos.
-      </p>
-    </header>
-
-    <div class="skills-grid">
-      <article class="panel-card skill-category card-fill"
-               *ngFor="let category of categories; let i = index"
-               appScrollReveal
-               [revealDelay]="i * 100">
-        <h3 class="category-name">{{ category.name }}</h3>
-        <p class="category-desc">{{ category.description }}</p>
-        <ul class="skill-list">
-          <li *ngFor="let skill of category.skills" class="skill-item">
-            <i [class]="skill.icon" class="skill-icon" aria-hidden="true"></i>
-            <span>{{ skill.name }}</span>
-          </li>
-        </ul>
-      </article>
-    </div>
-  </div>
-</section>
+<section id="skills" class="skills-section section-wrap" aria-labelledby="skills-heading">
+  <div class="section-inner">
+    <header class="skills-header">
+      <span class="section-eyebrow" appScrollReveal [revealDelay]="0">Capacidades</span>
+      <h2 id="skills-heading" class="section-heading" appScrollReveal [revealDelay]="80">
+        Stack y habilidades con foco profesional.
+      </h2>
+      <p class="section-lead" appScrollReveal revealVariant="fade" [revealDelay]="160">
+        Organizadas por aporte al producto: frontend, backend, cloud, automatización e IA en producción.
+      </p>
+    </header>
+
+    <div class="skills-grid">
+      <article class="panel-card skill-category card-fill"
+               *ngFor="let category of categories; let i = index"
+               appScrollReveal
+               [revealDelay]="i * 100">
+        <h3 class="category-name">{{ category.name }}</h3>
+        <p class="category-desc">{{ category.description }}</p>
+        <ul class="skill-list">
+          <li *ngFor="let skill of category.skills"
+              class="skill-item"
+              [class.skill-item--primary]="skill.emphasis === 'primary'"
+              [class.skill-item--secondary]="skill.emphasis === 'secondary'">
+            <i [class]="'skill-icon ' + skill.icon" aria-hidden="true"></i>
+            <span>{{ skill.name }}</span>
+          </li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>

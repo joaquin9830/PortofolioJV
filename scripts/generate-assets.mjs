@@ -17,7 +17,9 @@ const PROJECT_SLUGS = [
   'unnora',
   'carta-digital-gastronomia',
   'sitio-servicios-locales',
-  'automatizaciones-cloud'
+  'automatizaciones-cloud',
+  'travesias-blog-profesional',
+  'metanoiazen-landing-page'
 ];
 
 const SIZES = {

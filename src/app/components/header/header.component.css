@@ -315,6 +315,31 @@
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
+/* Compactar nav en desktop para caber Experiencia sin overflow */
+@media (min-width: 992px) and (max-width: 1399.98px) {
+  .nav-icon {
+    display: none;
+  }
+
+  .nav-link {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-xs);
+    gap: 0;
+  }
+
+  .nav-main {
+    gap: 2px;
+  }
+
+  .contact-btn span {
+    display: none;
+  }
+
+  .contact-btn {
+    padding: var(--space-2) var(--space-3);
+  }
+}
+
 /* Menú móvil */
 @media (max-width: 991.98px) {
   .navbar-collapse {

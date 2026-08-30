@@ -221,5 +221,69 @@ export const PROJECTS: Project[] = [
       'Procesamiento de archivos en S3'
     ],
     highlights: ['Serverless 24/7', 'Integraciones confiables', 'Sin intervención manual']
+  },
+  {
+    slug: 'travesias-blog-profesional',
+    title: 'Travesías — Blog profesional de contenidos',
+    subtitle: 'Plataforma web orientada a contenido, experiencia editorial y posicionamiento orgánico',
+    description:
+      'Desarrollo de un blog profesional orientado a la publicación y organización de contenido, con foco en legibilidad, navegación, identidad visual y experiencia responsive.',
+    problem:
+      'El proyecto necesitaba una presencia digital capaz de organizar contenido de forma clara, profesional y escalable, evitando una estructura genérica de blog.',
+    solution:
+      'Diseñé e implementé una experiencia web enfocada en contenido, con jerarquía editorial, navegación clara, componentes reutilizables, adaptación responsive y optimizaciones orientadas a descubrimiento y posicionamiento.',
+    role: 'Desarrollador Frontend — arquitectura de interfaz, implementación, responsive y optimización web.',
+    impact:
+      'Creación de un canal digital profesional para centralizar contenidos y fortalecer presencia online.',
+    ...img('travesias-blog-profesional', 'Travesías — Blog profesional de contenidos'),
+    category: 'web',
+    technologies: ['Angular', 'TypeScript', 'SCSS', 'Responsive Design', 'SEO', 'Content Architecture'],
+    date: '2026',
+    status: 'completed',
+    featured: false,
+    hasCaseStudy: true,
+    confidential: false,
+    features: [
+      'Arquitectura y organización de contenidos',
+      'Navegación editorial',
+      'Componentes reutilizables',
+      'Diseño responsive',
+      'SEO on-page',
+      'Optimización de carga',
+      'Experiencia mobile'
+    ],
+    highlights: ['Contenido profesional', 'Responsive', 'SEO', 'Arquitectura editorial']
+  },
+  {
+    slug: 'metanoiazen-landing-page',
+    title: 'Metanoiazen — Landing Page profesional',
+    subtitle: 'Sitio orientado a presencia digital, comunicación de servicios y conversión',
+    description:
+      'Landing page profesional desarrollada para presentar una propuesta de servicios de forma clara, transmitir identidad de marca y facilitar el contacto desde distintos dispositivos.',
+    problem:
+      'La marca necesitaba una presencia web simple pero profesional que comunicara correctamente su propuesta de valor y generara un canal directo de contacto.',
+    solution:
+      'Diseñé e implementé una landing page responsive con estructura orientada a conversión, jerarquía visual clara, secciones de servicios y llamados a la acción.',
+    role: 'Desarrollador Frontend — diseño de estructura, implementación, responsive, performance y despliegue.',
+    impact:
+      'Presencia digital profesional y canal centralizado para comunicar servicios y captar consultas.',
+    ...img('metanoiazen-landing-page', 'Metanoiazen — Landing Page profesional'),
+    category: 'web',
+    technologies: ['Angular', 'TypeScript', 'SCSS', 'Responsive Design', 'SEO', 'UX'],
+    date: '2024',
+    status: 'completed',
+    featured: false,
+    hasCaseStudy: true,
+    confidential: false,
+    features: [
+      'Hero orientado a propuesta de valor',
+      'Secciones de servicios',
+      'CTAs de contacto',
+      'Diseño responsive',
+      'Optimización mobile',
+      'SEO on-page',
+      'Performance web'
+    ],
+    highlights: ['Landing profesional', 'Conversión', 'Mobile-first', 'SEO']
   }
 ];

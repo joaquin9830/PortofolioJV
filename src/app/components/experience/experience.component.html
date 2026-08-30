@@ -1,0 +1,63 @@
+<section id="experience" class="experience-section section-wrap" aria-labelledby="experience-heading">
+  <div class="section-inner">
+    <header class="experience-header">
+      <span class="section-eyebrow" appScrollReveal [revealDelay]="0">Experiencia</span>
+      <h2 id="experience-heading" class="section-heading" appScrollReveal [revealDelay]="80">
+        Experiencia construyendo productos y sistemas en producción.
+      </h2>
+      <p class="section-lead" appScrollReveal revealVariant="fade" [revealDelay]="160">
+        Desarrollo software de punta a punta, combinando frontend, backend, cloud, integraciones,
+        análisis funcional y automatización para resolver procesos de negocio reales.
+      </p>
+    </header>
+
+    <ol class="experience-list">
+      <li class="experience-entry"
+          *ngFor="let item of experiences; let i = index; let last = last"
+          [class.experience-entry--current]="item.current"
+          [class.experience-entry--last]="last"
+          [attr.aria-current]="item.current ? 'true' : null"
+          appScrollReveal
+          [revealDelay]="i * 120">
+
+        <div class="experience-aside">
+          <time class="experience-period">{{ item.period }}</time>
+          <span *ngIf="item.current" class="experience-now">Actual</span>
+        </div>
+
+        <div class="experience-rail" aria-hidden="true">
+          <span class="experience-dot"></span>
+        </div>
+
+        <article class="experience-body" [attr.aria-labelledby]="'experience-role-' + item.id">
+          <header class="experience-identity">
+            <p *ngIf="item.company" class="experience-company">{{ item.company }}</p>
+            <h3 [id]="'experience-role-' + item.id" class="experience-role">{{ item.role }}</h3>
+          </header>
+
+          <p class="experience-description">{{ item.description }}</p>
+
+          <ul *ngIf="item.metrics?.length" class="experience-metrics" aria-label="Indicadores">
+            <li *ngFor="let metric of item.metrics">{{ metric }}</li>
+          </ul>
+
+          <div class="experience-block">
+            <h4 class="field-label">Responsabilidades y resultados</h4>
+            <ul class="experience-duties">
+              <li *ngFor="let duty of item.responsibilities">{{ duty }}</li>
+            </ul>
+          </div>
+
+          <div class="experience-block">
+            <h4 class="field-label">Stack</h4>
+            <ul class="experience-stack" aria-label="Tecnologías">
+              <li *ngFor="let tech of item.technologies">
+                <span class="tech-chip">{{ tech }}</span>
+              </li>
+            </ul>
+          </div>
+        </article>
+      </li>
+    </ol>
+  </div>
+</section>
